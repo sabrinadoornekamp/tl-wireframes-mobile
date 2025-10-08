@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Therapieland Mobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; background: #f5f5f5; }
+      .mobile-container { max-width: 400px; margin: 0 auto; background: white; min-height: 100vh; position: relative; }
+      .mobile-topbar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: white; border-bottom: 2px solid #000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; }
+      .mobile-topbar-left { display: flex; align-items: center; }
+      .mobile-topbar-right { display: flex; align-items: center; gap: 16px; }
+      .mobile-topbar-icon { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+      .mobile-topbar-icon:hover { background: #f5f5f5; }
+      .mobile-topbar-icon svg { width: 20px; height: 20px; fill: #000; }
+      .mobile-content { margin-top: 60px; padding: 20px; padding-bottom: 80px; }
+      .mobile-section { display: none; }
+      .mobile-section.active { display: block; }
+      .mobile-widget { background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px; }
+      .mobile-widget-title { font-size: 16px; font-weight: 500; color: #000; margin-bottom: 8px; }
+      .mobile-widget-description { font-size: 14px; color: #000; margin-bottom: 12px; }
+      .mobile-widget-action { font-size: 14px; color: #000; cursor: pointer; }
+      .mobile-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: white; border-top: 2px solid #000; display: flex; z-index: 1000; }
+      .mobile-nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; border-right: 1px solid #000; }
+      .mobile-nav-btn:last-child { border-right: none; }
+      .mobile-nav-btn.active { background: #f5f5f5; }
+      .mobile-nav-label { font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000; }
+      .mobile-fab { position: fixed; bottom: 90px; right: 20px; width: 56px; height: 56px; background: white; border: 2px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+      .mobile-fab:hover { background: #f5f5f5; transform: scale(1.05); }
+      .mobile-fab-icon svg { width: 24px; height: 24px; fill: #000; }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Top Bar -->
+    <div class="mobile-topbar">
+      <div class="mobile-topbar-left">
+        <h1 style="color: #000; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin: 0;">Therapieland</h1>
+      </div>
+      <div class="mobile-topbar-right">
+        <div class="mobile-topbar-icon" onclick="alert('Notifications clicked!')">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+          </svg>
+        </div>
+        <div class="mobile-topbar-icon" onclick="showSection('account')">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-container">
+      <div class="mobile-content">
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="mobile-section active">
+          <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Dashboard</h2>
+          
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Working On</div>
+            <div class="mobile-widget-description">Current therapy goals and progress tracking</div>
+            <div class="mobile-widget-action">View Progress →</div>
+          </div>
+
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Monitor</div>
+            <div class="mobile-widget-description">Health and wellness monitoring tools</div>
+            <div class="mobile-widget-action">Track Health →</div>
+          </div>
+
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Therapieland Video</div>
+            <div class="mobile-widget-description">Educational content and resources</div>
+            <div class="mobile-widget-action">Watch Video →</div>
+          </div>
+
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Coaching</div>
+            <div class="mobile-widget-description">Professional guidance and support</div>
+            <div class="mobile-widget-action">Get Coaching →</div>
+          </div>
+        </div>
+
+        <!-- My Therapieland Section -->
+        <div id="care-plan" class="mobile-section">
+          <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">My Therapieland</h2>
+          
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">GGZ Drenthe</div>
+            <div class="mobile-widget-description">Assigned by: GGZ Drenthe</div>
+            <div class="mobile-widget-action">View Care Plan →</div>
+          </div>
+
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Spoor30</div>
+            <div class="mobile-widget-description">Assigned by: Rotterdam Therapy Institute</div>
+            <div class="mobile-widget-action">View Care Plan →</div>
+          </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div id="chat" class="mobile-section">
+          <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Chat</h2>
+          
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Dr. Sarah Johnson</div>
+            <div class="mobile-widget-description">How are you feeling today?</div>
+            <div class="mobile-widget-action">2h ago</div>
+          </div>
+
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Therapy Support Team</div>
+            <div class="mobile-widget-description">Your progress report is ready</div>
+            <div class="mobile-widget-action">1d ago</div>
+          </div>
+        </div>
+
+        <!-- Account Section -->
+        <div id="account" class="mobile-section">
+          <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Account</h2>
+          
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Profile Information</div>
+            <div class="mobile-widget-description">John Doe - john.doe@example.com</div>
+            <div class="mobile-widget-action">Patient ID: 12345</div>
+          </div>
+
+          <div class="mobile-widget">
+            <div class="mobile-widget-title">Settings</div>
+            <div class="mobile-widget-description">Notifications, Dark Mode, Language, Privacy</div>
+            <div class="mobile-widget-action">Manage Settings →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Action Button (Help Avatar) -->
+    <div class="mobile-fab" onclick="alert('Help Avatar clicked!')">
+      <div class="mobile-fab-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="mobile-nav">
+      <div class="mobile-nav-btn active" onclick="showSection('dashboard')">
+        <div class="mobile-nav-label">Dashboard</div>
+      </div>
+      <div class="mobile-nav-btn" onclick="showSection('care-plan')">
+        <div class="mobile-nav-label">My Therapieland</div>
+      </div>
+      <div class="mobile-nav-btn" onclick="showSection('chat')">
+        <div class="mobile-nav-label">Chat</div>
+      </div>
+    </div>
+
+    <script>
+      function showSection(sectionName) {
+        // Hide all sections
+        document.querySelectorAll('.mobile-section').forEach(section => {
+          section.classList.remove('active');
+        });
+        
+        // Remove active class from all nav buttons
+        document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+        // Show selected section
+        document.getElementById(sectionName).classList.add('active');
+        
+        // Add active class to clicked nav button
+        event.target.closest('.mobile-nav-btn').classList.add('active');
+      }
+    </script>
+  </body>
+</html>
