@@ -1,0 +1,663 @@
+<template>
+  <div class="wireframe-module-detail-page">
+    <!-- Header with Navigation -->
+    <div class="wireframe-module-header">
+      <div class="wireframe-header-nav">
+        <button class="wireframe-back-button" @click="navigateToProgram">
+          ← Back to Cognitive Behavioral Therapy
+        </button>
+        <div class="wireframe-module-progress">
+          <div class="wireframe-progress-bar">
+            <div class="wireframe-progress-fill" style="width: 100%"></div>
+          </div>
+          <div class="wireframe-progress-text">100% Complete</div>
+        </div>
+      </div>
+      
+      <div class="wireframe-module-title-section">
+        <div class="wireframe-module-title">{{ currentModuleData.title }}</div>
+        <div class="wireframe-module-subtitle">{{ currentModuleData.description }}</div>
+      </div>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="wireframe-module-layout">
+      <!-- Sidebar Navigation -->
+      <div class="wireframe-module-sidebar">
+        <div class="wireframe-sidebar-header">
+          <div class="wireframe-sidebar-title">CBT Program Modules</div>
+          <div class="wireframe-sidebar-progress">2/6</div>
+        </div>
+        
+              <div class="wireframe-sidebar-sections">
+                <div class="wireframe-sidebar-item wireframe-sidebar-completed" @click="navigateToModule('introduction-to-cbt')">
+                  <div class="wireframe-sidebar-icon">✓</div>
+                  <div class="wireframe-sidebar-content">
+                    <div class="wireframe-sidebar-title">Introduction to CBT</div>
+                    <div class="wireframe-sidebar-duration">45 min</div>
+                  </div>
+                </div>
+                <div class="wireframe-sidebar-item wireframe-sidebar-completed" @click="navigateToModule('identifying-negative-thoughts')">
+                  <div class="wireframe-sidebar-icon">✓</div>
+                  <div class="wireframe-sidebar-content">
+                    <div class="wireframe-sidebar-title">Identifying Negative Thoughts</div>
+                    <div class="wireframe-sidebar-duration">60 min</div>
+                  </div>
+                </div>
+                <div class="wireframe-sidebar-item" @click="navigateToModule('thought-challenging-techniques')">
+                  <div class="wireframe-sidebar-icon">3</div>
+                  <div class="wireframe-sidebar-content">
+                    <div class="wireframe-sidebar-title">Thought Challenging Techniques</div>
+                    <div class="wireframe-sidebar-duration">50 min</div>
+                  </div>
+                </div>
+                <div class="wireframe-sidebar-item" @click="navigateToModule('behavioral-experiments')">
+                  <div class="wireframe-sidebar-icon">4</div>
+                  <div class="wireframe-sidebar-content">
+                    <div class="wireframe-sidebar-title">Behavioral Experiments</div>
+                    <div class="wireframe-sidebar-duration">55 min</div>
+                  </div>
+                </div>
+                <div class="wireframe-sidebar-item" @click="navigateToModule('relapse-prevention')">
+                  <div class="wireframe-sidebar-icon">5</div>
+                  <div class="wireframe-sidebar-content">
+                    <div class="wireframe-sidebar-title">Relapse Prevention</div>
+                    <div class="wireframe-sidebar-duration">40 min</div>
+                  </div>
+                </div>
+              </div>
+        
+        <!-- Module Navigation -->
+        <div class="wireframe-module-nav">
+          <button class="wireframe-nav-button wireframe-nav-prev" disabled>
+            ← Previous CBT Module
+          </button>
+          <button class="wireframe-nav-button wireframe-nav-next" @click="goToNextModule">
+            Next CBT Module →
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="wireframe-module-content">
+        <div class="wireframe-content-section">
+          <div class="wireframe-section-header">
+            <div class="wireframe-section-title">CBT Learning Objectives</div>
+            <div class="wireframe-section-meta">
+              <span class="wireframe-section-duration">10 min</span>
+              <span class="wireframe-section-progress">1 of 5</span>
+            </div>
+          </div>
+          
+          <div class="wireframe-section-content">
+            <div class="wireframe-learning-content">
+              <div class="wireframe-content-text">
+                <h3>CBT Learning Objectives</h3>
+                <ul>
+                  <li>Understand the CBT model and its applications</li>
+                  <li>Learn to identify automatic thoughts</li>
+                  <li>Recognize the connection between thoughts, feelings, and behaviors</li>
+                  <li>Begin practicing thought monitoring</li>
+                </ul>
+                
+                <h3>CBT Key Concepts</h3>
+                <p>This foundational module introduces you to the core principles of Cognitive Behavioral Therapy. You'll learn about the CBT triangle (thoughts, feelings, behaviors), understand how they interact, and begin to identify your own patterns. The module includes interactive exercises to help you recognize automatic thoughts and understand the connection between your thinking and emotional responses.</p>
+                
+                <div class="wireframe-examples">
+                  <h4>CBT Examples</h4>
+                  <div class="wireframe-example-item">CBT Triangle: "I think I'm not good enough" → Feel anxious → Avoid social situations</div>
+                  <div class="wireframe-example-item">Automatic thoughts: "I always mess things up" when making a small mistake</div>
+                  <div class="wireframe-example-item">Behavioral pattern: Feeling overwhelmed → Procrastinating → Feeling more overwhelmed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="wireframe-section-nav">
+            <button class="wireframe-section-button wireframe-section-prev" disabled>
+              ← Previous Section
+            </button>
+            <button class="wireframe-section-button wireframe-section-next">
+              Next Section →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const goToNextModule = () => {
+  router.push('/program/cognitive-behavioral-therapy/module/identifying-negative-thoughts')
+}
+
+const navigateToProgram = () => {
+  router.push('/program/cognitive-behavioral-therapy')
+}
+
+const navigateToProgramModules = () => {
+  router.push('/program/cognitive-behavioral-therapy#modules')
+}
+
+const navigateToModule = (moduleSlug) => {
+  console.log('CBT: Navigating to module:', moduleSlug)
+  const moduleRoutes = {
+    'introduction-to-cbt': '/program/cognitive-behavioral-therapy/module/introduction-to-cbt',
+    'identifying-negative-thoughts': '/program/cognitive-behavioral-therapy/module/identifying-negative-thoughts',
+    'thought-challenging-techniques': '/program/cognitive-behavioral-therapy/module/thought-challenging-techniques',
+    'behavioral-experiments': '/program/cognitive-behavioral-therapy/module/behavioral-experiments',
+    'relapse-prevention': '/program/cognitive-behavioral-therapy/module/relapse-prevention'
+  }
+  
+  const route = moduleRoutes[moduleSlug]
+  console.log('CBT: Route found:', route)
+  if (route) {
+    router.push(route)
+  } else {
+    console.error('CBT: No route found for module:', moduleSlug)
+  }
+}
+
+// Hide main app elements when module is open
+onMounted(() => {
+  const sidebar = document.querySelector('.v-navigation-drawer')
+  const topbar = document.querySelector('.v-app-bar')
+  if (sidebar) {
+    sidebar.style.display = 'none'
+  }
+  if (topbar) {
+    topbar.style.display = 'none'
+  }
+})
+
+onUnmounted(() => {
+  const sidebar = document.querySelector('.v-navigation-drawer')
+  const topbar = document.querySelector('.v-app-bar')
+  if (sidebar) {
+    sidebar.style.display = ''
+  }
+  if (topbar) {
+    topbar.style.display = ''
+  }
+})
+</script>
+
+<style scoped>
+/* CBT Introduction Module Wireframe Styles */
+.wireframe-module-detail-page {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: white;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+  padding: 24px;
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.wireframe-module-header {
+  margin-bottom: 32px;
+  border: 2px solid #000;
+  padding: 20px;
+  border-radius: 4px;
+  background: white;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.wireframe-back-button {
+  padding: 8px 16px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wireframe-back-button:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.wireframe-module-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wireframe-progress-bar {
+  width: 200px;
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.wireframe-progress-fill {
+  height: 100%;
+  background: #f0f0f0;
+  transition: width 0.3s ease;
+}
+
+.wireframe-progress-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-module-title-section {
+  text-align: center;
+}
+
+.wireframe-module-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.wireframe-module-subtitle {
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.wireframe-module-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+}
+
+.wireframe-module-sidebar {
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 20px;
+  background: white;
+  overflow-y: auto;
+}
+
+.wireframe-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #000;
+}
+
+.wireframe-sidebar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-sidebar-progress {
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-sidebar-sections {
+  margin-bottom: 30px;
+}
+
+.wireframe-sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+}
+
+.wireframe-sidebar-item:hover {
+  background: #f0f0f0;
+  border-color: black;
+  font-weight: 600;
+}
+
+.wireframe-sidebar-item.wireframe-sidebar-completed {
+  background: #f0f0f0;
+  border-color: black;
+  font-weight: 600;
+}
+
+.wireframe-sidebar-item.wireframe-sidebar-current {
+  background: #f0f0f0;
+  border-color: black;
+  font-weight: 600;
+}
+
+.wireframe-sidebar-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+  border: 1px solid #000;
+  border-radius: 2px;
+}
+
+.wireframe-sidebar-content {
+  flex: 1;
+}
+
+.wireframe-sidebar-item .wireframe-sidebar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.wireframe-sidebar-duration {
+  font-size: 12px;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-module-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.wireframe-nav-button {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wireframe-nav-button:hover:not(:disabled) {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.wireframe-nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wireframe-module-content {
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 20px;
+  background: white;
+  overflow-y: auto;
+}
+
+.wireframe-content-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.wireframe-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #000;
+}
+
+.wireframe-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-section-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-section-content {
+  margin-bottom: 40px;
+}
+
+.wireframe-learning-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.wireframe-learning-content ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.wireframe-learning-content li {
+  margin-bottom: 8px;
+  color: black;
+  font-weight: 600;
+}
+
+  margin-top: 20px;
+  padding: 20px;
+  background: #f0f0f0;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+  padding: 10px;
+  margin-bottom: 8px;
+  background: white;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-section-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #000;
+}
+
+.wireframe-section-button {
+  padding: 12px 24px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background: white;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wireframe-section-button:hover:not(:disabled) {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.wireframe-section-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wireframe-content-text {
+  color: black;
+  font-weight: 600;
+}
+
+.wireframe-content-text h3 {
+  color: black;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+}
+
+.wireframe-content-text p {
+  color: black;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+.wireframe-content-text ul, .wireframe-content-text ol {
+  color: black;
+  font-weight: 600;
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.wireframe-content-text li {
+  color: black;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.wireframe-examples {
+  margin: 20px 0;
+}
+
+.wireframe-examples h4 {
+  color: black;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.wireframe-example-item {
+  background: #f0f0f0;
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 8px 0;
+  color: black;
+  font-weight: 600;
+}
+
+  color: black;
+  font-weight: 600;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+  margin: 20px 0;
+}
+
+  color: black;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+  background: #f0f0f0;
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 8px 0;
+  color: black;
+  font-weight: 600;
+}
+
+  color: black;
+  font-weight: 600;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+  color: black;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+  margin: 20px 0;
+}
+
+  color: black;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+  background: #f0f0f0;
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 8px 0;
+  color: black;
+  font-weight: 600;
+}
+</style>

@@ -1,0 +1,56 @@
+App.vue (Root Component)
+├── AppHeader.vue (Top Navigation Bar)
+│   ├── Menu Toggle Button
+│   ├── "Therapieland" Title
+│   ├── Notifications Button
+│   └── User Account Button
+│
+├── SidebarNav.vue (Main Navigation)
+│   ├── Level 0: Main Menu
+│   │   ├── Dashboard
+│   │   ├── My therapieland (Expandable)
+│   │   │   ├── My progress
+│   │   │   ├── Monitors
+│   │   │   ├── All assignments (Expandable)
+│   │   │   ├── Programs (Expandable)
+│   │   │   │   ├── Cognitive Behavioral Therapy (65%)
+│   │   │   │   ├── Mindfulness & Stress Reduction (0%)
+│   │   │   │   ├── Trauma Recovery Program (0%)
+│   │   │   │   ├── Depression Treatment Program (0%)
+│   │   │   │   ├── Social Skills Training (0%)
+│   │   │   │   └── Anger Management Program (0%)
+│   │   │   ├── Questionnaires (Expandable)
+│   │   │   │   ├── PHQ-9 Depression Screening
+│   │   │   │   ├── GAD-7 Anxiety Assessment
+│   │   │   │   ├── PTSD Checklist (PCL-5)
+│   │   │   │   ├── Social Anxiety Scale
+│   │   │   │   └── Weekly Mood Check-in
+│   │   │   └── Library
+│   │   ├── Chats
+│   │   └── Settings
+│   │
+│   └── Mobile Navigation (Multi-level)
+│       ├── Level 0: Main Menu
+│       ├── Level 1: Submenu (My therapieland)
+│       ├── Level 2: Programs/Questionnaires
+│       └── Level 3: Individual Modules
+│
+├── BreadcrumbNav.vue (Navigation Trail)
+│   ├── Dashboard (Always first)
+│   ├── Current Section
+│   ├── Current Subsection
+│   └── Current Page
+│
+└── Router View (Dynamic Content)
+    ├── DashboardContent.vue
+    ├── TherapielandOverview.vue
+    ├── MyProgress.vue
+    ├── AllAssignments.vue
+    ├── ProgramsQuestionnaires.vue
+    ├── CBT Modules (5 components)
+    ├── Mindfulness Modules (4 components)
+    ├── Trauma Modules (3 components)
+    ├── Depression Modules (3 components)
+    ├── Social Skills Modules (3 components)
+    ├── Anger Management Modules (3 components)
+    └── Questionnaire Components
