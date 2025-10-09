@@ -31,7 +31,12 @@
       .mobile-nav-btn:last-child { border-right: none; }
       .mobile-nav-btn.active { background: #f5f5f5; color: #000; }
       .mobile-nav-label { font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+<<<<<<< HEAD
       .mobile-care-plan { background: white; border: 2px solid #000; border-radius: 0; padding: 12px; margin-bottom: 12px; }
+=======
+      .mobile-nav-icon { display: block; margin-bottom: 6px; }
+      .mobile-care-plan { background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px; }
+>>>>>>> 95746e1 (Mobile: notifications page, bell navigation, removed dropdown/overlay & dark mode toggle, help avatar '?', bottom nav icons, updated My Therapieland icon)
       .mobile-care-plan-name { font-size: 18px; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-care-plan-status { font-size: 14px; color: #000; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-program-item { background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin-bottom: 6px; }
@@ -55,10 +60,15 @@
       .mobile-topbar-icon { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; }
       .mobile-topbar-icon:hover { background: #f5f5f5; }
       .mobile-topbar-icon svg { width: 20px; height: 20px; fill: #000; }
+<<<<<<< HEAD
       .mobile-content { margin-top: 60px; padding-bottom: 80px; }
       .mobile-dropdown { position: fixed; top: 60px; right: 20px; width: 300px; background: white; border: 2px solid #000; border-radius: 0; z-index: 1002; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
       .mobile-dropdown-header { padding: 16px; border-bottom: 2px solid #000; background: #f5f5f5; }
       .mobile-dropdown-title { font-size: 16px; font-weight: 500; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin: 0; }
+=======
+      .mobile-content { margin-top: 60px; padding: 20px; padding-bottom: 100px; }
+      
+>>>>>>> 95746e1 (Mobile: notifications page, bell navigation, removed dropdown/overlay & dark mode toggle, help avatar '?', bottom nav icons, updated My Therapieland icon)
       .mobile-notification-item { padding: 12px 16px; border-bottom: 1px solid #000; display: flex; align-items: flex-start; gap: 12px; }
       .mobile-notification-item:last-child { border-bottom: none; }
       .mobile-notification-icon { width: 32px; height: 32px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -66,7 +76,7 @@
       .mobile-notification-title { font-size: 14px; font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-notification-text { font-size: 12px; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-notification-time { font-size: 11px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
-      .mobile-dropdown-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.1); z-index: 1001; display: none; }
+      
     </style>
   </head>
   <body>
@@ -89,65 +99,7 @@
       </div>
     </div>
 
-    <!-- Notification Dropdown -->
-    <div class="mobile-dropdown-overlay" id="notificationOverlay" onclick="closeNotifications()"></div>
-    <div class="mobile-dropdown" id="notificationDropdown">
-      <div class="mobile-dropdown-header">
-        <div class="mobile-dropdown-title">Notifications</div>
-      </div>
-      
-      <div class="mobile-notification-item">
-        <div class="mobile-notification-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
-        </div>
-        <div class="mobile-notification-content">
-          <div class="mobile-notification-title">Appointment Confirmed</div>
-          <div class="mobile-notification-text">Your therapy session is scheduled for tomorrow at 2:00 PM</div>
-          <div class="mobile-notification-time">2 hours ago</div>
-        </div>
-      </div>
-
-      <div class="mobile-notification-item">
-        <div class="mobile-notification-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-        </div>
-        <div class="mobile-notification-content">
-          <div class="mobile-notification-title">Progress Update</div>
-          <div class="mobile-notification-text">Great progress this week! Keep up the excellent work</div>
-          <div class="mobile-notification-time">1 day ago</div>
-        </div>
-      </div>
-
-      <div class="mobile-notification-item">
-        <div class="mobile-notification-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-          </svg>
-        </div>
-        <div class="mobile-notification-content">
-          <div class="mobile-notification-title">Medication Reminder</div>
-          <div class="mobile-notification-text">Don't forget to take your evening medication</div>
-          <div class="mobile-notification-time">3 days ago</div>
-        </div>
-      </div>
-
-      <div class="mobile-notification-item">
-        <div class="mobile-notification-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-        </div>
-        <div class="mobile-notification-content">
-          <div class="mobile-notification-title">New Message</div>
-          <div class="mobile-notification-text">Dr. Smith sent you a message about your treatment plan</div>
-          <div class="mobile-notification-time">1 week ago</div>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="mobile-container">
       <div class="mobile-content">
@@ -398,12 +350,6 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #000;">
-              <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000;">Dark Mode</div>
-              <div style="width: 40px; height: 20px; background: white; border: 2px solid #000; position: relative; cursor: pointer;" onclick="toggleSwitch(this)">
-                <div style="position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: #000; border: 1px solid #000;"></div>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #000;">
               <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000;">Language</div>
               <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000; cursor: pointer;">English ▼</div>
             </div>
@@ -411,6 +357,63 @@
               <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000;">Privacy</div>
               <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000; cursor: pointer;">→</div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div id="notifications" class="mobile-section">
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Notifications</h2>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">Care plan updated</div>
+            <div class="mobile-notification-text">Your professional has changed something in your care plan.</div>
+            <div class="mobile-notification-time">2 hours ago</div>
+          </div>
+        </div>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">New collaborator invited</div>
+            <div class="mobile-notification-text">Dr. Janssen has invited Dr. Smith to work together in your care plan. See who has access to your care plan(s).</div>
+            <div class="mobile-notification-time">1 day ago</div>
+          </div>
+        </div>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">Care plan updated</div>
+            <div class="mobile-notification-text">Your professional has changed something in your care plan.</div>
+            <div class="mobile-notification-time">3 days ago</div>
+          </div>
+        </div>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">New collaborator invited</div>
+            <div class="mobile-notification-text">Ms. Gomez has invited Mr. Lee to work together in your care plan. See who has access to your care plan(s).</div>
+            <div class="mobile-notification-time">1 week ago</div>
           </div>
         </div>
       </div>
@@ -444,12 +447,27 @@
     <!-- Mobile Bottom Navigation -->
     <div class="mobile-nav">
       <div class="mobile-nav-btn active" onclick="showSection('dashboard')">
+        <span class="mobile-nav-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+        </span>
         <div class="mobile-nav-label">Dashboard</div>
       </div>
       <div class="mobile-nav-btn" onclick="showSection('care-plan')">
+        <span class="mobile-nav-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H8v-2h4v2zm6-4H8v-2h10v2zm0-4H8V7h10v2z"/>
+          </svg>
+        </span>
         <div class="mobile-nav-label">My Therapieland</div>
       </div>
       <div class="mobile-nav-btn" onclick="showSection('chat')">
+        <span class="mobile-nav-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v14l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </span>
         <div class="mobile-nav-label">Chat</div>
       </div>
       </div>
@@ -458,9 +476,7 @@
     <!-- Floating Action Button (Help Avatar) -->
     <div class="mobile-fab" onclick="openHelp()">
       <div class="mobile-fab-icon">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
+        ?
       </div>
     </div>
 
@@ -492,18 +508,10 @@
       }
 
       function openNotifications() {
-        const dropdown = document.getElementById('notificationDropdown');
-        const overlay = document.getElementById('notificationOverlay');
-        dropdown.style.display = 'block';
-        overlay.style.display = 'block';
+        showSection('notifications');
       }
 
-      function closeNotifications() {
-        const dropdown = document.getElementById('notificationDropdown');
-        const overlay = document.getElementById('notificationOverlay');
-        dropdown.style.display = 'none';
-        overlay.style.display = 'none';
-      }
+      
 
       function openAccount() {
         showSection('account');
