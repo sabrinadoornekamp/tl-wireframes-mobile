@@ -18,7 +18,7 @@
       .mobile-widget-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
       .mobile-widget-title { font-size: 16px; font-weight: 600; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-widget-description { font-size: 14px; color: #000; line-height: 1.4; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
-      .mobile-widget-action { font-size: 12px; color: #000; font-weight: 500; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-widget-action { display: none; }
       .mobile-video-container { margin: 12px 0; }
       .mobile-video-placeholder { width: 100%; height: 120px; background: #f5f5f5; border: 2px solid #000; border-radius: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; cursor: pointer; }
       .mobile-video-play-button { font-size: 32px; color: #000; margin-bottom: 8px; }
@@ -60,15 +60,10 @@
       .mobile-topbar-icon { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; }
       .mobile-topbar-icon:hover { background: #f5f5f5; }
       .mobile-topbar-icon svg { width: 20px; height: 20px; fill: #000; }
-<<<<<<< HEAD
-      .mobile-content { margin-top: 60px; padding-bottom: 80px; }
+      .mobile-content { margin-top: 60px; padding: 8px; padding-bottom: 80px; }
       .mobile-dropdown { position: fixed; top: 60px; right: 20px; width: 300px; background: white; border: 2px solid #000; border-radius: 0; z-index: 1002; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
       .mobile-dropdown-header { padding: 16px; border-bottom: 2px solid #000; background: #f5f5f5; }
       .mobile-dropdown-title { font-size: 16px; font-weight: 500; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin: 0; }
-=======
-      .mobile-content { margin-top: 60px; padding: 20px; padding-bottom: 100px; }
-      
->>>>>>> 95746e1 (Mobile: notifications page, bell navigation, removed dropdown/overlay & dark mode toggle, help avatar '?', bottom nav icons, updated My Therapieland icon)
       .mobile-notification-item { padding: 12px 16px; border-bottom: 1px solid #000; display: flex; align-items: flex-start; gap: 12px; }
       .mobile-notification-item:last-child { border-bottom: none; }
       .mobile-notification-icon { width: 32px; height: 32px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -114,7 +109,30 @@
             <span class="mobile-widget-title">Working On</span>
           </div>
           <div class="mobile-widget-description">Current assignments and tasks</div>
-          <div class="mobile-widget-action">View Care Plan →</div>
+          
+          <!-- Program 1 -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin: 8px 0;">
+            <div style="font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Cognitive Behavioral Therapy</div>
+            <div style="font-size: 12px; color: #000; margin-bottom: 6px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Learn to identify and challenge negative thoughts</div>
+            <div style="background: #000; height: 4px; border-radius: 0; margin: 6px 0; width: 65%;"></div>
+            <div style="font-size: 11px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">65% Complete</div>
+          </div>
+          
+          <!-- Program 2 -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin: 8px 0;">
+            <div style="font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mindfulness & Stress Reduction</div>
+            <div style="font-size: 12px; color: #000; margin-bottom: 6px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Develop mindfulness techniques for stress management</div>
+            <div style="background: #000; height: 4px; border-radius: 0; margin: 6px 0; width: 30%;"></div>
+            <div style="font-size: 11px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">30% Complete</div>
+          </div>
+          
+          <!-- Program 3 -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin: 8px 0;">
+            <div style="font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Trauma Recovery Program</div>
+            <div style="font-size: 12px; color: #000; margin-bottom: 6px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Specialized program for trauma recovery</div>
+            <div style="background: #000; height: 4px; border-radius: 0; margin: 6px 0; width: 0%;"></div>
+            <div style="font-size: 11px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">0% Complete</div>
+          </div>
         </div>
 
         <!-- Widget: Monitor -->
@@ -418,12 +436,134 @@
         </div>
       </div>
 
-      <!-- Other Sections Placeholders -->
+      <!-- Monitors Section -->
       <div id="monitors" class="mobile-section">
-        <h2 style="color: #333; margin-bottom: 16px; font-size: 18px;">Monitors</h2>
-        <div style="background: white; border: 2px solid #333; border-radius: 8px; padding: 16px; text-align: center;">
-          <div style="font-size: 48px; margin-bottom: 16px;">📊</div>
-          <div style="color: #666;">Health and progress monitoring tools</div>
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Monitors</h2>
+        
+        <!-- Mood Tracking Graph -->
+        <div class="mobile-widget">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Mood Tracking</span>
+          </div>
+          <div class="mobile-widget-description">Weekly mood progression</div>
+          
+          <!-- Mood Graph Placeholder -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin: 12px 0; height: 140px; position: relative;">
+            <!-- Graph Title -->
+            <div style="font-size: 12px; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Last 7 Days</div>
+            
+            <!-- Graph Container -->
+            <div style="height: 100px; position: relative; border: 1px solid #000; background: #f9f9f9; overflow: hidden;">
+              <!-- Y-axis labels -->
+              <div style="position: absolute; left: -25px; top: 0; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">5</div>
+              <div style="position: absolute; left: -25px; top: 20px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">4</div>
+              <div style="position: absolute; left: -25px; top: 40px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">3</div>
+              <div style="position: absolute; left: -25px; top: 60px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">2</div>
+              <div style="position: absolute; left: -25px; top: 80px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">1</div>
+              
+              <!-- Graph Line with Mood Data -->
+              <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
+                <!-- Grid lines -->
+                <line x1="0" y1="20" x2="100%" y2="20" stroke="#ddd" stroke-width="1"/>
+                <line x1="0" y1="40" x2="100%" y2="40" stroke="#ddd" stroke-width="1"/>
+                <line x1="0" y1="60" x2="100%" y2="60" stroke="#ddd" stroke-width="1"/>
+                <line x1="0" y1="80" x2="100%" y2="80" stroke="#ddd" stroke-width="1"/>
+                
+                <!-- Mood trend line (showing improvement) -->
+                <polyline points="15,70 35,60 55,45 75,35 95,30 115,25 135,20" 
+                         fill="none" stroke="#000" stroke-width="3"/>
+                
+                <!-- Data points with mood indicators -->
+                <circle cx="15" cy="70" r="4" fill="#ff6b6b"/>
+                <circle cx="35" cy="60" r="4" fill="#ffa726"/>
+                <circle cx="55" cy="45" r="4" fill="#ffeb3b"/>
+                <circle cx="75" cy="35" r="4" fill="#66bb6a"/>
+                <circle cx="95" cy="30" r="4" fill="#42a5f5"/>
+                <circle cx="115" cy="25" r="4" fill="#ab47bc"/>
+                <circle cx="135" cy="20" r="4" fill="#26a69a"/>
+              </svg>
+              
+              <!-- X-axis labels -->
+              <div style="position: absolute; bottom: -15px; left: 15px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mon</div>
+              <div style="position: absolute; bottom: -15px; left: 35px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Tue</div>
+              <div style="position: absolute; bottom: -15px; left: 55px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Wed</div>
+              <div style="position: absolute; bottom: -15px; left: 75px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Thu</div>
+              <div style="position: absolute; bottom: -15px; left: 95px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Fri</div>
+              <div style="position: absolute; bottom: -15px; left: 115px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sat</div>
+              <div style="position: absolute; bottom: -15px; left: 135px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sun</div>
+            </div>
+            
+            <!-- Mood Legend -->
+            <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">
+              <span>😔 Low</span>
+              <span>😐 Medium</span>
+              <span>😊 High</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sleep Quality Chart -->
+        <div class="mobile-widget">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Sleep Quality</span>
+          </div>
+          <div class="mobile-widget-description">Sleep hours and quality rating</div>
+          
+          <!-- Bar Chart -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin: 12px 0;">
+            <div style="font-size: 12px; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">This Week</div>
+            
+            <div style="display: flex; align-items: end; height: 80px; gap: 8px; margin-bottom: 20px;">
+              <!-- Bar 1 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 60px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mon</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7.5h</div>
+              </div>
+              
+              <!-- Bar 2 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 45px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Tue</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">6.2h</div>
+              </div>
+              
+              <!-- Bar 3 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 70px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Wed</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">8.1h</div>
+              </div>
+              
+              <!-- Bar 4 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 55px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Thu</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7.0h</div>
+              </div>
+              
+              <!-- Bar 5 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 40px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Fri</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">5.8h</div>
+              </div>
+              
+              <!-- Bar 6 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 75px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sat</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">8.5h</div>
+              </div>
+              
+              <!-- Bar 7 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 65px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sun</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7.8h</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
