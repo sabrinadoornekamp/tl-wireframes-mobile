@@ -26,15 +26,59 @@
       .mobile-video-duration { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-section { display: none; }
       .mobile-section.active { display: block; }
-      .mobile-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: white; border: 3px solid #000; display: flex; z-index: 1000; margin: 0; box-sizing: border-box; }
-      .mobile-nav-btn { flex: 1; padding: 20px 8px; text-align: center; cursor: pointer; border-right: 3px solid #000; }
+      .mobile-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: white; border: 3px solid #000; display: flex; z-index: 1000; margin: 0; box-sizing: border-box; transition: transform 0.3s ease; }
+      .mobile-nav.hidden { transform: translateY(100%); }
+      .mobile-nav-btn { flex: 1; padding: 20px 8px; text-align: center; cursor: pointer; border-right: 3px solid #000; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
       .mobile-nav-btn:last-child { border-right: none; }
       .mobile-nav-btn.active { background: #f5f5f5; color: #000; }
-      .mobile-nav-label { font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
-<<<<<<< HEAD
-      .mobile-care-plan { background: white; border: 2px solid #000; border-radius: 0; padding: 12px; margin-bottom: 12px; }
-=======
-      .mobile-nav-icon { display: block; margin-bottom: 6px; }
+      
+      /* Touch/Active state for mobile */
+      .mobile-nav-btn:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        transition: all 0.1s ease;
+      }
+      
+      /* Focus state for accessibility */
+      .mobile-nav-btn:focus { 
+        outline: 3px solid #007bff; 
+        outline-offset: -3px;
+        background: #e3f2fd;
+      }
+      
+      /* Ripple effect for touch feedback */
+      .mobile-nav-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(0,0,0,0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .mobile-nav-btn:active::before {
+        width: 100px;
+        height: 100px;
+      }
+      
+      /* Icon animation on touch */
+      .mobile-nav-btn:active .mobile-nav-icon {
+        transform: scale(0.9);
+        transition: transform 0.1s ease;
+      }
+      .mobile-nav-label { font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #666; }
+      .mobile-nav-btn.active .mobile-nav-label { color: #000; }
+      .mobile-nav-icon { display: block; margin-bottom: 2px; color: #666; }
+      .mobile-nav-btn.active .mobile-nav-icon { color: #000; }
+      .mobile-nav-icon svg { fill: #666 !important; }
+      .mobile-nav-btn.active .mobile-nav-icon svg { fill: #000 !important; }
+      .mobile-nav-icon svg path { fill: #666 !important; }
+      .mobile-nav-btn.active .mobile-nav-icon svg path { fill: #000 !important; }
       .mobile-care-plan { background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px; }
 >>>>>>> 95746e1 (Mobile: notifications page, bell navigation, removed dropdown/overlay & dark mode toggle, help avatar '?', bottom nav icons, updated My Therapieland icon)
       .mobile-care-plan-name { font-size: 18px; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
@@ -50,15 +94,34 @@
       .mobile-chat-name { font-weight: 500; color: #000; margin-bottom: 2px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-chat-message { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
       .mobile-chat-time { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
-      .mobile-fab { position: fixed; bottom: 90px; right: 20px; width: 56px; height: 56px; background: white; border: 2px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-      .mobile-fab:hover { background: #f5f5f5; transform: scale(1.05); }
+      .mobile-fab { position: fixed; bottom: 90px; right: 20px; width: 56px; height: 56px; background: white; border: 2px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: transform 0.3s ease, bottom 0.3s ease, box-shadow 0.3s ease; }
+      .mobile-fab:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        transition: all 0.1s ease;
+      }
+      .mobile-fab:focus { 
+        outline: 3px solid #007bff; 
+        outline-offset: 3px;
+      }
+      .mobile-fab.hidden { transform: translateY(100%); }
       .mobile-fab-icon { font-size: 24px; color: #000; }
       .mobile-fab-icon svg { width: 24px; height: 24px; fill: #000; }
-      .mobile-topbar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: white; border-bottom: 2px solid #000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; }
+      .mobile-topbar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: white; border-bottom: 2px solid #000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; transition: transform 0.3s ease; }
+      .mobile-topbar.hidden { transform: translateY(-100%); }
       .mobile-topbar-left { display: flex; align-items: center; }
       .mobile-topbar-right { display: flex; align-items: center; gap: 16px; }
-      .mobile-topbar-icon { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-      .mobile-topbar-icon:hover { background: #f5f5f5; }
+      .mobile-topbar-icon { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; }
+      .mobile-topbar-icon:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        transition: all 0.1s ease;
+      }
+      .mobile-topbar-icon:focus { 
+        outline: 2px solid #007bff; 
+        outline-offset: 2px;
+      }
       .mobile-topbar-icon svg { width: 20px; height: 20px; fill: #000; }
       .mobile-content { margin-top: 60px; padding: 8px; padding-bottom: 80px; }
       .mobile-dropdown { position: fixed; top: 60px; right: 20px; width: 300px; background: white; border: 2px solid #000; border-radius: 0; z-index: 1002; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
@@ -647,8 +710,22 @@
         alert('Opening Help Avatar...');
       }
 
+      let previousSection = 'dashboard';
+      
       function openNotifications() {
-        showSection('notifications');
+        // Check if we're already on notifications page
+        const notificationsSection = document.getElementById('notifications');
+        if (notificationsSection.classList.contains('active')) {
+          // If on notifications, go back to previous section
+          showSection(previousSection);
+        } else {
+          // Store current section as previous before switching to notifications
+          const currentActive = document.querySelector('.mobile-section.active');
+          if (currentActive && currentActive.id !== 'notifications') {
+            previousSection = currentActive.id;
+          }
+          showSection('notifications');
+        }
       }
 
       
@@ -657,6 +734,40 @@
         showSection('account');
       }
 
+      // Scroll handling for footer navigation
+      let lastScrollTop = 0;
+      let isScrolling = false;
+      
+      function handleScroll() {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        requestAnimationFrame(() => {
+          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const mobileNav = document.querySelector('.mobile-nav');
+          const mobileTopbar = document.querySelector('.mobile-topbar');
+          const mobileFab = document.querySelector('.mobile-fab');
+          
+          if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+            // Scrolling down - hide all UI elements
+            mobileNav.classList.add('hidden');
+            mobileTopbar.classList.add('hidden');
+            mobileFab.classList.add('hidden');
+          } else if (currentScrollTop < lastScrollTop || currentScrollTop < 50) {
+            // Scrolling up or near top - show all UI elements
+            mobileNav.classList.remove('hidden');
+            mobileTopbar.classList.remove('hidden');
+            mobileFab.classList.remove('hidden');
+          }
+          
+          lastScrollTop = currentScrollTop;
+          isScrolling = false;
+        });
+      }
+      
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      
       // Show dashboard by default
       showSection('dashboard');
     </script>
