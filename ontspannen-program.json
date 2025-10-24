@@ -1,0 +1,352 @@
+{
+  "program": {
+    "id": "ontspannen",
+    "name": "Ontspannen",
+    "description": "Relaxation techniques and stress relief exercises",
+    "type": "e-health",
+    "totalModules": 4,
+    "totalSessions": 7,
+    "progressionType": "linear",
+    "estimatedDuration": "45-50 minutes total",
+    "targetAudience": "Individuals seeking stress relief and relaxation techniques",
+    "learningObjectives": [
+      "Understand the scientific necessity of stress and recognize personal warning signals",
+      "Learn to categorize stress and choose effective relaxation methods",
+      "Practice calming and cognitive exercises and assess their effectiveness",
+      "Consolidate learned lessons and automate relaxation routines"
+    ]
+  },
+  "modules": [
+    {
+      "id": "module-1",
+      "name": "Fundament & Inzicht",
+      "description": "The client understands the scientific necessity of stress and recognizes personal warning signals",
+      "order": 1,
+      "sessions": [
+        {
+          "id": "session-1",
+          "name": "Starten & Het Waarom",
+          "description": "Welcome and understanding the why behind stress",
+          "order": 1,
+          "estimatedTime": "6 minutes theory + assignments",
+          "isFirstSession": true,
+          "initialAction": "Coach Selection and Start Measurement (Monitor Setup)",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Welkom: Start je Veerkracht-Streak",
+              "type": "introduction",
+              "contentType": "video_coach",
+              "focus": "ownership",
+              "maxWords": null,
+              "description": "Introduction video with coach, focus on ownership"
+            },
+            {
+              "id": "step-2",
+              "title": "Spanning is een Instinct (Waarom het vastzit)",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "scientific_understanding",
+              "maxWords": 410,
+              "description": "Core explanation video and text about why stress is instinctual"
+            },
+            {
+              "id": "step-3",
+              "title": "Ontspanning is een Training (Verwachtingen)",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "expectations",
+              "maxWords": 150,
+              "description": "Core explanation about relaxation as training, setting expectations"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd",
+            "Uitleg: Uitleg over de Monitor en het meten van voortgang"
+          ]
+        },
+        {
+          "id": "session-2",
+          "name": "Jouw Signalen & Balans",
+          "description": "Your signals and balance",
+          "order": 2,
+          "estimatedTime": "7 minutes theory + assignments",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Jouw Persoonlijke Signalen (Vroege Herkenning)",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "early_recognition",
+              "maxWords": 350,
+              "description": "Core explanation about personal stress signals and early recognition"
+            },
+            {
+              "id": "step-2",
+              "title": "Balans: Draagkracht vs. Draaglast",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "balance_understanding",
+              "maxWords": 395,
+              "description": "Core explanation about balance between carrying capacity and load"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd",
+            "Uitleg: Uitleg over de Monitor en het meten van voortgang"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "module-2",
+      "name": "De Analyse & Keuzehulp",
+      "description": "The client learns to categorize stress and gets the choice model for effective relaxation",
+      "order": 2,
+      "sessions": [
+        {
+          "id": "session-3",
+          "name": "De Compensatie Regel",
+          "description": "The compensation rule",
+          "order": 3,
+          "estimatedTime": "6 minutes theory + assignments",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "De Keuzehulp (Hoofd-Hart-Hand Model)",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "choice_model",
+              "maxWords": 380,
+              "description": "Core explanation about the Head-Heart-Hand choice model"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd",
+            "Uitleg: Uitleg over de Monitor en het meten van voortgang"
+          ]
+        },
+        {
+          "id": "session-4",
+          "name": "Snel Hulp (Hand & Hart)",
+          "description": "Quick help (Hand & Heart)",
+          "order": 4,
+          "estimatedTime": "8 minutes theory + assignments",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Spanning Loslaten (Progressieve Relaxatie ✋)",
+              "type": "exercise",
+              "contentType": "video_audio",
+              "focus": "progressive_relaxation",
+              "maxWords": 200,
+              "description": "Short explanation and audio exercise for progressive relaxation"
+            },
+            {
+              "id": "step-2",
+              "title": "Ontladen door Beweging (Energie Kwijt ✋)",
+              "type": "exercise",
+              "contentType": "video_exercise",
+              "focus": "movement_discharge",
+              "maxWords": 250,
+              "description": "Short explanation and exercise video for energy discharge through movement"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd",
+            "Uitleg: Uitleg over de Monitor en het meten van voortgang"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "module-3",
+      "name": "De Praktijk & Verdieping",
+      "description": "The client tries out calming and cognitive exercises and assesses their effectiveness",
+      "order": 3,
+      "sessions": [
+        {
+          "id": "session-5",
+          "name": "Snel Hulp (Hoofd & Hart)",
+          "description": "Quick help (Head & Heart)",
+          "order": 5,
+          "estimatedTime": "8 minutes theory + assignments",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Adem als Anker (Ruimte & Tellen 💆♥️)",
+              "type": "exercise",
+              "contentType": "audio_exercise",
+              "focus": "breathing_anchor",
+              "maxWords": 200,
+              "description": "Short explanation and audio exercise for breathing as anchor"
+            },
+            {
+              "id": "step-2",
+              "title": "Rust in het Hoofd (Visualisatie/Mindfulness 💆♥️)",
+              "type": "exercise",
+              "contentType": "audio_exercise",
+              "focus": "mental_calm",
+              "maxWords": 250,
+              "description": "Short explanation and audio exercise for visualization/mindfulness"
+            },
+            {
+              "id": "step-3",
+              "title": "Oxytocine & Creatie (Sociaal/Creatief ✋♥️)",
+              "type": "exercise",
+              "contentType": "assignment",
+              "focus": "social_creative",
+              "maxWords": 200,
+              "description": "Short explanation and assignment for oxytocin and creative activities"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd",
+            "Uitleg: Uitleg over de Monitor en het meten van voortgang"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "module-4",
+      "name": "Integratie & Gewoontevorming",
+      "description": "The client consolidates learned lessons and automates the routine (Recency Effect)",
+      "order": 4,
+      "sessions": [
+        {
+          "id": "session-6",
+          "name": "Consolidatie & Selectie",
+          "description": "Consolidation & Selection",
+          "order": 6,
+          "estimatedTime": "5 minutes theory + assignments",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Jouw Beste Oefeningen Kiezen",
+              "type": "reflection",
+              "contentType": "assignment",
+              "focus": "exercise_selection",
+              "maxWords": 100,
+              "description": "Short explanation and reflection assignment for choosing best exercises"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd",
+            "Uitleg: Uitleg over de Monitor en het meten van voortgang"
+          ]
+        },
+        {
+          "id": "session-7",
+          "name": "Routine & Gewoonte (De Afronding)",
+          "description": "Routine & Habit (The Conclusion)",
+          "order": 7,
+          "estimatedTime": "5 minutes theory + assignments",
+          "isLastSession": true,
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Automatiseer Je Ontspanning (Routine Planner)",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "routine_automation",
+              "maxWords": 305,
+              "description": "Core explanation about automating relaxation routines"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd",
+            "Uitleg: Uitleg over de Monitor en het meten van voortgang"
+          ]
+        }
+      ]
+    }
+  ],
+  "progressionRules": {
+    "type": "linear",
+    "description": "No session can be started before the previous session is completed",
+    "unlockConditions": {
+      "session-1": "none",
+      "session-2": "session-1-completed",
+      "session-3": "session-2-completed",
+      "session-4": "session-3-completed",
+      "session-5": "session-4-completed",
+      "session-6": "session-5-completed",
+      "session-7": "session-6-completed"
+    }
+  },
+  "contentTypes": {
+    "video_coach": {
+      "description": "Introduction video with coach",
+      "focus": "ownership and personal connection"
+    },
+    "video_text": {
+      "description": "Core explanation video with supporting text",
+      "focus": "scientific understanding and learning"
+    },
+    "video_audio": {
+      "description": "Short explanation video with audio exercise",
+      "focus": "practical application"
+    },
+    "video_exercise": {
+      "description": "Short explanation video with exercise demonstration",
+      "focus": "physical practice"
+    },
+    "audio_exercise": {
+      "description": "Short explanation with audio exercise",
+      "focus": "guided practice"
+    },
+    "assignment": {
+      "description": "Short explanation with practical assignment",
+      "focus": "active engagement"
+    },
+    "reflection": {
+      "description": "Reflection exercise with assignment",
+      "focus": "consolidation and personalization"
+    }
+  },
+  "focusAreas": {
+    "ownership": "Building personal ownership and commitment",
+    "scientific_understanding": "Understanding the science behind stress",
+    "expectations": "Setting realistic expectations for learning",
+    "early_recognition": "Learning to recognize personal stress signals early",
+    "balance_understanding": "Understanding the balance between capacity and load",
+    "choice_model": "Learning the Head-Heart-Hand choice model",
+    "progressive_relaxation": "Learning progressive relaxation techniques",
+    "movement_discharge": "Using movement to discharge energy",
+    "breathing_anchor": "Using breathing as an anchor",
+    "mental_calm": "Achieving mental calm through visualization",
+    "social_creative": "Using social and creative activities for oxytocin",
+    "exercise_selection": "Choosing the most effective exercises",
+    "routine_automation": "Automating relaxation routines"
+  },
+  "libraryContent": {
+    "verdieping": "De wetenschap achter de stress-cirkel",
+    "tips": "Het verschil tussen mindfulness en ontspanningsoefeningen",
+    "inspiratie": "Ervaringsverhaal: Terugdenken aan je Kindertijd",
+    "uitleg": "Uitleg over de Monitor en het meten van voortgang"
+  },
+  "metadata": {
+    "created": "2024-01-15",
+    "version": "1.0",
+    "author": "Therapieland Content Team",
+    "lastUpdated": "2024-01-15",
+    "tags": ["relaxation", "stress-relief", "mindfulness", "e-health", "self-care"],
+    "difficulty": "beginner",
+    "language": "dutch",
+    "accessibility": "mobile-optimized"
+  }
+}
