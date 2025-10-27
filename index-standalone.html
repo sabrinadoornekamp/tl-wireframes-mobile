@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Therapieland Mobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+      body { margin: 0; padding: 0; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; background: white; }
+      .mobile-container { padding: 8px; padding-bottom: 100px; }
+      .mobile-header { background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px; text-align: center; }
+      .mobile-widget { background: white; border: 2px solid #000; border-radius: 0; padding: 12px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s ease; }
+      .mobile-widget:hover { border-color: #000; background: #f5f5f5; transform: translateY(-2px); }
+      .mobile-widget-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+      .mobile-widget-title { font-size: 16px; font-weight: 600; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-widget-description { font-size: 14px; color: #000; line-height: 1.4; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-widget-action { display: none; }
+      .mobile-video-container { margin: 12px 0; }
+      .mobile-video-placeholder { width: 100%; height: 120px; background: #f5f5f5; border: 2px solid #000; border-radius: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; cursor: pointer; }
+      .mobile-video-play-button { font-size: 32px; color: #000; margin-bottom: 8px; }
+      .mobile-video-title { font-size: 14px; font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-video-duration { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-section { display: none; }
+      .mobile-section.active { display: block; }
+      .mobile-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: white; border: 3px solid #000; display: flex; z-index: 1000; margin: 0; box-sizing: border-box; transition: transform 0.3s ease; }
+      .mobile-nav.hidden { transform: translateY(100%); }
+      .mobile-nav-btn { flex: 1; padding: 20px 8px; text-align: center; cursor: pointer; border-right: 3px solid #000; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+      .mobile-nav-btn:last-child { border-right: none; }
+      .mobile-nav-btn.active { background: #f5f5f5; color: #000; }
+      
+      /* Touch/Active state for mobile */
+      .mobile-nav-btn:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        transition: all 0.1s ease;
+      }
+      
+      /* Focus state for accessibility */
+      .mobile-nav-btn:focus { 
+        outline: 3px solid #007bff; 
+        outline-offset: -3px;
+        background: #e3f2fd;
+      }
+      
+      /* Ripple effect for touch feedback */
+      .mobile-nav-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(0,0,0,0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .mobile-nav-btn:active::before {
+        width: 100px;
+        height: 100px;
+      }
+      
+      /* Icon animation on touch */
+      .mobile-nav-btn:active .mobile-nav-icon {
+        transform: scale(0.9);
+        transition: transform 0.1s ease;
+      }
+      .mobile-nav-label { font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #666; }
+      .mobile-nav-btn.active .mobile-nav-label { color: #000; }
+      .mobile-nav-icon { display: block; margin-bottom: 2px; color: #666; }
+      .mobile-nav-btn.active .mobile-nav-icon { color: #000; }
+      .mobile-nav-icon svg { fill: #666 !important; }
+      .mobile-nav-btn.active .mobile-nav-icon svg { fill: #000 !important; }
+      .mobile-nav-icon svg path { fill: #666 !important; }
+      .mobile-nav-btn.active .mobile-nav-icon svg path { fill: #000 !important; }
+      .mobile-care-plan { background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px; }
+>>>>>>> 95746e1 (Mobile: notifications page, bell navigation, removed dropdown/overlay & dark mode toggle, help avatar '?', bottom nav icons, updated My Therapieland icon)
+      .mobile-care-plan-name { font-size: 18px; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-care-plan-status { font-size: 14px; color: #000; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-program-item { background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin-bottom: 6px; }
+      .mobile-program-name { font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-program-description { font-size: 12px; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-progress-bar { background: #000; height: 4px; border-radius: 0; margin: 8px 0; }
+      .mobile-progress-text { font-size: 12px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-chat-item { display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #000; border-radius: 0; margin-bottom: 8px; background: white; }
+      .mobile-chat-avatar { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; color: #000; font-size: 16px; }
+      .mobile-chat-content { flex: 1; }
+      .mobile-chat-name { font-weight: 500; color: #000; margin-bottom: 2px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-chat-message { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-chat-time { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-fab { position: fixed; bottom: 90px; right: 20px; width: 56px; height: 56px; background: white; border: 2px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: transform 0.3s ease, bottom 0.3s ease, box-shadow 0.3s ease; }
+      .mobile-fab:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        transition: all 0.1s ease;
+      }
+      .mobile-fab:focus { 
+        outline: 3px solid #007bff; 
+        outline-offset: 3px;
+      }
+      .mobile-fab.hidden { transform: translateY(100%); }
+      .mobile-fab-icon { font-size: 24px; color: #000; }
+      .mobile-fab-icon svg { width: 24px; height: 24px; fill: #000; }
+      .mobile-topbar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: white; border-bottom: 2px solid #000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; transition: transform 0.3s ease; }
+      .mobile-topbar.hidden { transform: translateY(-100%); }
+      .mobile-topbar-left { display: flex; align-items: center; }
+      .mobile-topbar-right { display: flex; align-items: center; gap: 16px; }
+      .mobile-topbar-icon { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; }
+      .mobile-topbar-icon:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        transition: all 0.1s ease;
+      }
+      .mobile-topbar-icon:focus { 
+        outline: 2px solid #007bff; 
+        outline-offset: 2px;
+      }
+      .mobile-topbar-icon svg { width: 20px; height: 20px; fill: #000; }
+      .mobile-content { margin-top: 60px; padding: 8px; padding-bottom: 80px; }
+      .mobile-dropdown { position: fixed; top: 60px; right: 20px; width: 300px; background: white; border: 2px solid #000; border-radius: 0; z-index: 1002; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+      .mobile-dropdown-header { padding: 16px; border-bottom: 2px solid #000; background: #f5f5f5; }
+      .mobile-dropdown-title { font-size: 16px; font-weight: 500; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin: 0; }
+      .mobile-notification-item { padding: 12px 16px; border-bottom: 1px solid #000; display: flex; align-items: flex-start; gap: 12px; }
+      .mobile-notification-item:last-child { border-bottom: none; }
+      .mobile-notification-icon { width: 32px; height: 32px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .mobile-notification-content { flex: 1; }
+      .mobile-notification-title { font-size: 14px; font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-notification-text { font-size: 12px; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-notification-time { font-size: 11px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Top Bar -->
+    <div class="mobile-topbar">
+      <div class="mobile-topbar-left">
+        <h1 style="color: #000; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin: 0;">Therapieland</h1>
+      </div>
+      <div class="mobile-topbar-right">
+        <div class="mobile-topbar-icon" onclick="openNotifications()">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+          </svg>
+        </div>
+        <div class="mobile-topbar-icon" onclick="openAccount()">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="mobile-container">
+      <div class="mobile-content">
+
+      <!-- Dashboard Section -->
+      <div id="dashboard" class="mobile-section active">
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Dashboard</h2>
+        
+        <!-- Widget: Working On -->
+        <div class="mobile-widget" onclick="showSection('care-plan')">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Working On</span>
+          </div>
+          <div class="mobile-widget-description">Current assignments and tasks</div>
+          
+          <!-- Program 1 -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin: 8px 0;">
+            <div style="font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Cognitive Behavioral Therapy</div>
+            <div style="font-size: 12px; color: #000; margin-bottom: 6px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Learn to identify and challenge negative thoughts</div>
+            <div style="background: #000; height: 4px; border-radius: 0; margin: 6px 0; width: 65%;"></div>
+            <div style="font-size: 11px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">65% Complete</div>
+          </div>
+          
+          <!-- Program 2 -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin: 8px 0;">
+            <div style="font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mindfulness & Stress Reduction</div>
+            <div style="font-size: 12px; color: #000; margin-bottom: 6px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Develop mindfulness techniques for stress management</div>
+            <div style="background: #000; height: 4px; border-radius: 0; margin: 6px 0; width: 30%;"></div>
+            <div style="font-size: 11px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">30% Complete</div>
+          </div>
+          
+          <!-- Program 3 -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin: 8px 0;">
+            <div style="font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Trauma Recovery Program</div>
+            <div style="font-size: 12px; color: #000; margin-bottom: 6px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Specialized program for trauma recovery</div>
+            <div style="background: #000; height: 4px; border-radius: 0; margin: 6px 0; width: 0%;"></div>
+            <div style="font-size: 11px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">0% Complete</div>
+          </div>
+          
+          <!-- Program 4 - Ontspannen -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin: 8px 0; cursor: pointer; transition: all 0.2s ease;" onclick="showOntspannenProgram()" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
+            <div style="font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Ontspannen</div>
+            <div style="font-size: 12px; color: #000; margin-bottom: 6px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Relaxation techniques and stress relief exercises</div>
+            <div style="background: #000; height: 4px; border-radius: 0; margin: 6px 0; width: 20%;"></div>
+            <div style="font-size: 11px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">20% Complete</div>
+            <div style="font-size: 10px; color: #000; margin-top: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">4 Modules • 7 Sessions</div>
+          </div>
+        </div>
+
+        <!-- Widget: Monitor -->
+        <div class="mobile-widget" onclick="showSection('monitors')">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Monitor</span>
+          </div>
+          <div class="mobile-widget-description">Health and progress tracking</div>
+          <div class="mobile-widget-action">View Monitors →</div>
+        </div>
+
+        <!-- Widget: Therapieland Video -->
+        <div class="mobile-widget" onclick="playVideo()">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Therapieland Video</span>
+          </div>
+          <div class="mobile-widget-description">Educational content and guidance</div>
+          <div class="mobile-video-container">
+            <div class="mobile-video-placeholder">
+              <div class="mobile-video-play-button">▶</div>
+              <div class="mobile-video-title">Introduction to Therapy</div>
+              <div class="mobile-video-duration">5:30</div>
+            </div>
+          </div>
+          <div class="mobile-widget-action">Watch Video →</div>
+        </div>
+
+        <!-- Widget: Therapieland Overview -->
+        <div class="mobile-widget" onclick="showSection('overview')">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Therapieland Overview</span>
+          </div>
+          <div class="mobile-widget-description">Platform introduction and features</div>
+          <div class="mobile-widget-action">Learn More →</div>
+        </div>
+
+        <!-- Widget: Coaching -->
+        <div class="mobile-widget" onclick="showSection('coaching')">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Coaching</span>
+          </div>
+          <div class="mobile-widget-description">Professional guidance and support</div>
+          <div class="mobile-widget-action">Get Coaching →</div>
+        </div>
+
+      </div>
+
+      <!-- My Therapieland Section -->
+      <div id="care-plan" class="mobile-section">
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">My Therapieland</h2>
+        
+        <!-- Care Plan 1 -->
+        <div class="mobile-care-plan">
+          <div class="mobile-care-plan-name">GGZ Drenthe</div>
+          <div class="mobile-care-plan-status">Status: Active</div>
+          <div style="font-size: 12px; color: #000; margin-top: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Assigned by: GGZ Drenthe</div>
+          
+          <h3 style="color: #000; margin: 16px 0 8px 0; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Assigned Programs:</h3>
+          
+          <!-- Cognitive Behavioral Therapy -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Cognitive Behavioral Therapy</div>
+            <div class="mobile-program-description">Learn to identify and challenge negative thoughts</div>
+            <div class="mobile-progress-bar" style="width: 65%;"></div>
+            <div class="mobile-progress-text">65% Complete</div>
+          </div>
+
+          <!-- Mindfulness & Stress Reduction -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Mindfulness & Stress Reduction</div>
+            <div class="mobile-program-description">Develop mindfulness techniques for stress management</div>
+            <div class="mobile-progress-bar" style="width: 30%;"></div>
+            <div class="mobile-progress-text">30% Complete</div>
+          </div>
+
+          <!-- Trauma Recovery Program -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Trauma Recovery Program</div>
+            <div class="mobile-program-description">Specialized program for trauma recovery</div>
+            <div class="mobile-progress-bar" style="width: 0%;"></div>
+            <div class="mobile-progress-text">0% Complete</div>
+          </div>
+
+          <h3 style="color: #333; margin: 16px 0 8px 0; font-size: 16px;">Assigned Questionnaires:</h3>
+          
+          <!-- Anxiety Assessment -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Anxiety Assessment</div>
+            <div class="mobile-program-description">Weekly anxiety level assessment</div>
+            <div style="font-size: 12px; color: #ff9800; font-weight: 500;">Status: Pending</div>
+          </div>
+
+          <!-- Mood Tracking -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Mood Tracking</div>
+            <div class="mobile-program-description">Daily mood and emotional state tracking</div>
+            <div style="font-size: 12px; color: #000; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Status: Completed</div>
+          </div>
+
+          <!-- Ontspannen -->
+          <div class="mobile-program-item" onclick="showOntspannenProgram()" style="cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
+            <div class="mobile-program-name">Ontspannen</div>
+            <div class="mobile-program-description">Relaxation techniques and stress relief exercises</div>
+            <div class="mobile-progress-bar" style="width: 20%;"></div>
+            <div class="mobile-progress-text">20% Complete</div>
+          </div>
+
+          <div style="margin-top: 16px; text-align: center;">
+            <button style="background: white; color: #000; border: 2px solid #000; padding: 12px 24px; border-radius: 0; font-weight: 500; cursor: pointer; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">
+              Invite Professional
+            </button>
+          </div>
+        </div>
+
+        <!-- Care Plan 2 -->
+        <div class="mobile-care-plan">
+          <div class="mobile-care-plan-name">Spoor30</div>
+          <div class="mobile-care-plan-status">Status: Active</div>
+          <div style="font-size: 12px; color: #000; margin-top: 4px;">Assigned by: Spoor30</div>
+          
+          <h3 style="color: #000; margin: 16px 0 8px 0; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Assigned Programs:</h3>
+          
+          <!-- Depression Treatment Program -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Depression Treatment Program</div>
+            <div class="mobile-program-description">Comprehensive treatment for depression management</div>
+            <div class="mobile-progress-bar" style="width: 25%;"></div>
+            <div class="mobile-progress-text">25% Complete</div>
+          </div>
+
+          <!-- Sleep Hygiene Program -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Sleep Hygiene Program</div>
+            <div class="mobile-program-description">Improve sleep quality and establish healthy sleep patterns</div>
+            <div class="mobile-progress-bar" style="width: 10%;"></div>
+            <div class="mobile-progress-text">10% Complete</div>
+          </div>
+
+          <h3 style="color: #000; margin: 16px 0 8px 0; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Assigned Questionnaires:</h3>
+          
+          <!-- PHQ-9 Depression Scale -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">PHQ-9 Depression Scale</div>
+            <div class="mobile-program-description">Weekly depression assessment</div>
+            <div style="font-size: 12px; color: #000; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Status: Pending</div>
+          </div>
+
+          <!-- Sleep Quality Assessment -->
+          <div class="mobile-program-item">
+            <div class="mobile-program-name">Sleep Quality Assessment</div>
+            <div class="mobile-program-description">Daily sleep quality tracking</div>
+            <div style="font-size: 12px; color: #000; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Status: Completed</div>
+          </div>
+
+          <!-- Ontspannen -->
+          <div class="mobile-program-item" onclick="showOntspannenProgram()" style="cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='white'">
+            <div class="mobile-program-name">Ontspannen</div>
+            <div class="mobile-program-description">Relaxation techniques and stress relief exercises</div>
+            <div class="mobile-progress-bar" style="width: 15%;"></div>
+            <div class="mobile-progress-text">15% Complete</div>
+          </div>
+
+          <div style="margin-top: 16px; text-align: center;">
+            <button style="background: white; color: #000; border: 2px solid #000; padding: 12px 24px; border-radius: 0; font-weight: 500; cursor: pointer; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">
+              Invite Professional
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Section -->
+      <div id="chat" class="mobile-section">
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Chat</h2>
+        
+        <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px;">
+          <button style="background: white; color: #000; border: 2px solid #000; padding: 12px 24px; border-radius: 0; font-weight: 500; cursor: pointer; width: 100%; margin-bottom: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">
+            + New Chat
+          </button>
+          
+          <h3 style="color: #000; margin-bottom: 12px; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Recent Conversations:</h3>
+          
+          <!-- Dr. Sarah Johnson -->
+          <div class="mobile-chat-item">
+            <div class="mobile-chat-avatar">👤</div>
+            <div class="mobile-chat-content">
+              <div class="mobile-chat-name">Dr. Sarah Johnson</div>
+              <div class="mobile-chat-message">How are you feeling today?</div>
+            </div>
+            <div class="mobile-chat-time">2h ago</div>
+          </div>
+
+          <!-- Therapy Support Team -->
+          <div class="mobile-chat-item">
+            <div class="mobile-chat-avatar">👥</div>
+            <div class="mobile-chat-content">
+              <div class="mobile-chat-name">Therapy Support Team</div>
+              <div class="mobile-chat-message">Your progress report is ready</div>
+            </div>
+            <div class="mobile-chat-time">1d ago</div>
+          </div>
+
+          <!-- Emergency Support -->
+          <div class="mobile-chat-item">
+            <div class="mobile-chat-avatar">🚨</div>
+            <div class="mobile-chat-content">
+              <div class="mobile-chat-name">Emergency Support</div>
+              <div class="mobile-chat-message">We are here 24/7 if you need help</div>
+            </div>
+            <div class="mobile-chat-time">3d ago</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Section -->
+      <div id="account" class="mobile-section">
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Account</h2>
+        
+        <!-- Profile Information -->
+        <div class="mobile-widget" style="margin-bottom: 16px;">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Profile Information</span>
+          </div>
+          <div style="padding: 12px; border: 2px solid #000; border-radius: 0; background: white; margin-top: 8px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+              <div style="width: 60px; height: 60px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; color: #000; font-size: 24px;">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 32px; height: 32px; fill: #000;">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div>
+                <div style="font-weight: 500; color: #000; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">John Doe</div>
+                <div style="font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">john.doe@example.com</div>
+                <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Patient ID: 12345</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div class="mobile-widget">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Settings</span>
+          </div>
+          <div style="padding: 12px; border: 2px solid #000; border-radius: 0; background: white; margin-top: 8px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #000;">
+              <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000;">Notifications</div>
+              <div style="width: 40px; height: 20px; background: #000; border: 2px solid #000; position: relative; cursor: pointer;" onclick="toggleSwitch(this)">
+                <div style="position: absolute; top: 2px; right: 2px; width: 16px; height: 16px; background: white; border: 1px solid #000;"></div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #000;">
+              <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000;">Language</div>
+              <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000; cursor: pointer;">English ▼</div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0;">
+              <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000;">Privacy</div>
+              <div style="font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #000; cursor: pointer;">→</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div id="notifications" class="mobile-section">
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Notifications</h2>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">Care plan updated</div>
+            <div class="mobile-notification-text">Your professional has changed something in your care plan.</div>
+            <div class="mobile-notification-time">2 hours ago</div>
+          </div>
+        </div>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">New collaborator invited</div>
+            <div class="mobile-notification-text">Dr. Janssen has invited Dr. Smith to work together in your care plan. See who has access to your care plan(s).</div>
+            <div class="mobile-notification-time">1 day ago</div>
+          </div>
+        </div>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">Care plan updated</div>
+            <div class="mobile-notification-text">Your professional has changed something in your care plan.</div>
+            <div class="mobile-notification-time">3 days ago</div>
+          </div>
+        </div>
+
+        <div class="mobile-notification-item">
+          <div class="mobile-notification-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; fill: #000;">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div class="mobile-notification-content">
+            <div class="mobile-notification-title">New collaborator invited</div>
+            <div class="mobile-notification-text">Ms. Gomez has invited Mr. Lee to work together in your care plan. See who has access to your care plan(s).</div>
+            <div class="mobile-notification-time">1 week ago</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monitors Section -->
+      <div id="monitors" class="mobile-section">
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Monitors</h2>
+        
+        <!-- Mood Tracking Graph -->
+        <div class="mobile-widget">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Mood Tracking</span>
+          </div>
+          <div class="mobile-widget-description">Weekly mood progression</div>
+          
+          <!-- Mood Graph Placeholder -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin: 12px 0; height: 140px; position: relative;">
+            <!-- Graph Title -->
+            <div style="font-size: 12px; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Last 7 Days</div>
+            
+            <!-- Graph Container -->
+            <div style="height: 100px; position: relative; border: 1px solid #000; background: #f9f9f9; overflow: hidden;">
+              <!-- Y-axis labels -->
+              <div style="position: absolute; left: -25px; top: 0; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">5</div>
+              <div style="position: absolute; left: -25px; top: 20px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">4</div>
+              <div style="position: absolute; left: -25px; top: 40px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">3</div>
+              <div style="position: absolute; left: -25px; top: 60px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">2</div>
+              <div style="position: absolute; left: -25px; top: 80px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">1</div>
+              
+              <!-- Graph Line with Mood Data -->
+              <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
+                <!-- Grid lines -->
+                <line x1="0" y1="20" x2="100%" y2="20" stroke="#ddd" stroke-width="1"/>
+                <line x1="0" y1="40" x2="100%" y2="40" stroke="#ddd" stroke-width="1"/>
+                <line x1="0" y1="60" x2="100%" y2="60" stroke="#ddd" stroke-width="1"/>
+                <line x1="0" y1="80" x2="100%" y2="80" stroke="#ddd" stroke-width="1"/>
+                
+                <!-- Mood trend line (showing improvement) -->
+                <polyline points="15,70 35,60 55,45 75,35 95,30 115,25 135,20" 
+                         fill="none" stroke="#000" stroke-width="3"/>
+                
+                <!-- Data points with mood indicators -->
+                <circle cx="15" cy="70" r="4" fill="#ff6b6b"/>
+                <circle cx="35" cy="60" r="4" fill="#ffa726"/>
+                <circle cx="55" cy="45" r="4" fill="#ffeb3b"/>
+                <circle cx="75" cy="35" r="4" fill="#66bb6a"/>
+                <circle cx="95" cy="30" r="4" fill="#42a5f5"/>
+                <circle cx="115" cy="25" r="4" fill="#ab47bc"/>
+                <circle cx="135" cy="20" r="4" fill="#26a69a"/>
+              </svg>
+              
+              <!-- X-axis labels -->
+              <div style="position: absolute; bottom: -15px; left: 15px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mon</div>
+              <div style="position: absolute; bottom: -15px; left: 35px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Tue</div>
+              <div style="position: absolute; bottom: -15px; left: 55px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Wed</div>
+              <div style="position: absolute; bottom: -15px; left: 75px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Thu</div>
+              <div style="position: absolute; bottom: -15px; left: 95px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Fri</div>
+              <div style="position: absolute; bottom: -15px; left: 115px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sat</div>
+              <div style="position: absolute; bottom: -15px; left: 135px; font-size: 9px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sun</div>
+            </div>
+            
+            <!-- Mood Legend -->
+            <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">
+              <span>😔 Low</span>
+              <span>😐 Medium</span>
+              <span>😊 High</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sleep Quality Chart -->
+        <div class="mobile-widget">
+          <div class="mobile-widget-header">
+            <span class="mobile-widget-title">Sleep Quality</span>
+          </div>
+          <div class="mobile-widget-description">Sleep hours and quality rating</div>
+          
+          <!-- Bar Chart -->
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin: 12px 0;">
+            <div style="font-size: 12px; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">This Week</div>
+            
+            <div style="display: flex; align-items: end; height: 80px; gap: 8px; margin-bottom: 20px;">
+              <!-- Bar 1 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 60px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mon</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7.5h</div>
+              </div>
+              
+              <!-- Bar 2 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 45px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Tue</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">6.2h</div>
+              </div>
+              
+              <!-- Bar 3 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 70px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Wed</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">8.1h</div>
+              </div>
+              
+              <!-- Bar 4 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 55px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Thu</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7.0h</div>
+              </div>
+              
+              <!-- Bar 5 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 40px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Fri</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">5.8h</div>
+              </div>
+              
+              <!-- Bar 6 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 75px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sat</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">8.5h</div>
+              </div>
+              
+              <!-- Bar 7 -->
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; height: 65px; background: #000; margin-bottom: 4px;"></div>
+                <div style="font-size: 10px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sun</div>
+                <div style="font-size: 8px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7.8h</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="overview" class="mobile-section">
+        <h2 style="color: #333; margin-bottom: 16px; font-size: 18px;">Therapieland Overview</h2>
+        <div style="background: white; border: 2px solid #333; border-radius: 8px; padding: 16px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 16px;">ℹ️</div>
+          <div style="color: #666;">Platform introduction and features</div>
+        </div>
+      </div>
+
+      <div id="coaching" class="mobile-section">
+        <h2 style="color: #333; margin-bottom: 16px; font-size: 18px;">Coaching</h2>
+        <div style="background: white; border: 2px solid #333; border-radius: 8px; padding: 16px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 16px;">👨‍⚕️</div>
+          <div style="color: #666;">Professional guidance and support</div>
+        </div>
+      </div>
+
+      <!-- Ontspannen Program Section -->
+      <div id="ontspannen-program" class="mobile-section">
+        <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+          <h2 style="color: #000; margin-bottom: 16px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Ontspannen Program</h2>
+          <p style="color: #000; margin-bottom: 20px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Relaxation techniques and stress relief exercises</p>
+          
+          <!-- Program Overview -->
+          <div style="display: flex; justify-content: space-around; margin-bottom: 24px; padding: 16px; background: #f9f9f9; border: 1px solid #000;">
+            <div style="text-align: center;">
+              <div style="font-size: 24px; font-weight: 600; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">4</div>
+              <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Modules</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 24px; font-weight: 600; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7</div>
+              <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sessions</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 24px; font-weight: 600; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">45-50</div>
+              <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Minutes</div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Progress</span>
+              <span style="font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">20% Complete</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: #f0f0f0; border: 1px solid #000;">
+              <div style="width: 20%; height: 100%; background: #000;"></div>
+            </div>
+          </div>
+
+          <!-- Modules List -->
+          <div style="margin-bottom: 24px;">
+            <h3 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Program Modules</h3>
+            
+            <!-- Module 1 -->
+            <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="color: #000; margin: 0; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Module I: Fundament & Inzicht</h4>
+                <span style="color: #4caf50; font-size: 16px;">✓</span>
+              </div>
+              <p style="color: #000; margin: 0 0 8px 0; font-size: 14px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Understanding stress and recognizing personal signals</p>
+              <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">2 Sessions • 13 minutes</div>
+            </div>
+
+            <!-- Module 2 -->
+            <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="color: #000; margin: 0; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Module II: De Analyse & Keuzehulp</h4>
+                <span style="color: #ff9800; font-size: 16px;">●</span>
+              </div>
+              <p style="color: #000; margin: 0 0 8px 0; font-size: 14px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Learning to categorize stress and choose relaxation methods</p>
+              <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">2 Sessions • 14 minutes</div>
+            </div>
+
+            <!-- Module 3 -->
+            <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="color: #000; margin: 0; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Module III: De Praktijk & Verdieping</h4>
+                <span style="color: #9e9e9e; font-size: 16px;">🔒</span>
+              </div>
+              <p style="color: #000; margin: 0 0 8px 0; font-size: 14px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Practicing calming and cognitive exercises</p>
+              <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">1 Session • 8 minutes</div>
+            </div>
+
+            <!-- Module 4 -->
+            <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="color: #000; margin: 0; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Module IV: Integratie & Gewoontevorming</h4>
+                <span style="color: #9e9e9e; font-size: 16px;">🔒</span>
+              </div>
+              <p style="color: #000; margin: 0 0 8px 0; font-size: 14px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Consolidating lessons and automating routines</p>
+              <div style="font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">2 Sessions • 10 minutes</div>
+            </div>
+          </div>
+
+          <!-- Start Button -->
+          <div style="text-align: center;">
+            <button style="background: #000; color: white; border: 2px solid #000; padding: 16px 32px; border-radius: 0; font-weight: 500; cursor: pointer; font-size: 16px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;" onclick="startOntspannenProgram()">
+              Start Program
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav">
+      <div class="mobile-nav-btn active" onclick="showSection('dashboard')">
+        <span class="mobile-nav-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+        </span>
+        <div class="mobile-nav-label">Dashboard</div>
+      </div>
+      <div class="mobile-nav-btn" onclick="showSection('care-plan')">
+        <span class="mobile-nav-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H8v-2h4v2zm6-4H8v-2h10v2zm0-4H8V7h10v2z"/>
+          </svg>
+        </span>
+        <div class="mobile-nav-label">My Therapieland</div>
+      </div>
+      <div class="mobile-nav-btn" onclick="showSection('chat')">
+        <span class="mobile-nav-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v14l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </span>
+        <div class="mobile-nav-label">Chat</div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Floating Action Button (Help Avatar) -->
+    <div class="mobile-fab" onclick="openHelp()">
+      <div class="mobile-fab-icon">
+        ?
+      </div>
+    </div>
+
+    <script>
+      function showSection(sectionName) {
+        // Hide all sections
+        document.querySelectorAll('.mobile-section').forEach(section => {
+          section.classList.remove('active');
+        });
+        
+        // Remove active class from all nav buttons
+        document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+        // Show selected section
+        document.getElementById(sectionName).classList.add('active');
+        
+        // Add active class to clicked nav button
+        if (event && event.target) {
+          event.target.closest('.mobile-nav-btn').classList.add('active');
+        }
+        
+        // Ensure UI elements are visible when switching sections
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileTopbar = document.querySelector('.mobile-topbar');
+        const mobileFab = document.querySelector('.mobile-fab');
+        
+        // Always show UI elements when switching sections
+        mobileNav.classList.remove('hidden');
+        mobileTopbar.classList.remove('hidden');
+        mobileFab.classList.remove('hidden');
+      }
+
+      function playVideo() {
+        alert('Playing Therapieland Video...');
+      }
+
+      function openHelp() {
+        alert('Opening Help Avatar...');
+      }
+
+      let previousSection = 'dashboard';
+      
+      function openNotifications() {
+        // Check if we're already on notifications page
+        const notificationsSection = document.getElementById('notifications');
+        if (notificationsSection.classList.contains('active')) {
+          // If on notifications, go back to previous section
+          showSection(previousSection);
+        } else {
+          // Store current section as previous before switching to notifications
+          const currentActive = document.querySelector('.mobile-section.active');
+          if (currentActive && currentActive.id !== 'notifications') {
+            previousSection = currentActive.id;
+          }
+          showSection('notifications');
+        }
+      }
+
+      
+
+      function openAccount() {
+        showSection('account');
+      }
+
+      // Scroll handling for footer navigation
+      let lastScrollTop = 0;
+      let isScrolling = false;
+      
+      // Define program sections where topbar/footer should hide on scroll
+      const programSections = ['care-plan', 'monitors', 'overview', 'coaching'];
+      
+      function isInProgramSection() {
+        const activeSection = document.querySelector('.mobile-section.active');
+        return activeSection && programSections.includes(activeSection.id);
+      }
+      
+      function handleScroll() {
+        if (isScrolling) return;
+        
+        isScrolling = true;
+        requestAnimationFrame(() => {
+          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const mobileNav = document.querySelector('.mobile-nav');
+          const mobileTopbar = document.querySelector('.mobile-topbar');
+          const mobileFab = document.querySelector('.mobile-fab');
+          
+          // Only hide/show UI elements when in a program section
+          if (isInProgramSection()) {
+            if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+              // Scrolling down - hide UI elements only in program sections
+              mobileNav.classList.add('hidden');
+              mobileTopbar.classList.add('hidden');
+              mobileFab.classList.add('hidden');
+            } else if (currentScrollTop < lastScrollTop || currentScrollTop < 50) {
+              // Scrolling up or near top - show UI elements
+              mobileNav.classList.remove('hidden');
+              mobileTopbar.classList.remove('hidden');
+              mobileFab.classList.remove('hidden');
+            }
+          } else {
+            // In main sections (dashboard, chat, account, notifications) - always show UI elements
+            mobileNav.classList.remove('hidden');
+            mobileTopbar.classList.remove('hidden');
+            mobileFab.classList.remove('hidden');
+          }
+          
+          lastScrollTop = currentScrollTop;
+          isScrolling = false;
+        });
+      }
+      
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      
+      // Ontspannen Program Functions
+      function showOntspannenProgram() {
+        showSection('ontspannen-program');
+      }
+      
+      function startOntspannenProgram() {
+        // Show coach selection modal
+        showCoachSelectionModal();
+      }
+      
+      function showCoachSelectionModal() {
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+        `;
+        
+        modal.innerHTML = `
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 24px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;" onclick="event.stopPropagation()">
+            <h3 style="margin: 0 0 16px 0; font-size: 20px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Coach Selection & Start Measurement</h3>
+            <p style="color: #000; margin: 0 0 20px 0; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Choose your coach and complete the initial assessment to begin your relaxation journey.</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; margin: 16px 0;">
+              <div class="coach-option" onclick="selectCoach('coach-1')" style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #000; border-radius: 0; cursor: pointer; transition: all 0.2s ease;">
+                <div style="font-size: 24px;">🧘‍♀️</div>
+                <div>
+                  <h4 style="margin: 0 0 4px 0; font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Dr. Sarah</h4>
+                  <p style="margin: 0; font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mindfulness & Stress Management</p>
+                </div>
+              </div>
+              
+              <div class="coach-option" onclick="selectCoach('coach-2')" style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #000; border-radius: 0; cursor: pointer; transition: all 0.2s ease;">
+                <div style="font-size: 24px;">👨‍⚕️</div>
+                <div>
+                  <h4 style="margin: 0 0 4px 0; font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Dr. Michael</h4>
+                  <p style="margin: 0; font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Cognitive Behavioral Therapy</p>
+                </div>
+              </div>
+              
+              <div class="coach-option" onclick="selectCoach('coach-3')" style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #000; border-radius: 0; cursor: pointer; transition: all 0.2s ease;">
+                <div style="font-size: 24px;">👩‍⚕️</div>
+                <div>
+                  <h4 style="margin: 0 0 4px 0; font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Dr. Lisa</h4>
+                  <p style="margin: 0; font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Relaxation Techniques</p>
+                </div>
+              </div>
+            </div>
+            
+            <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+              <button onclick="closeCoachSelection()" style="padding: 12px 24px; border: 2px solid #000; border-radius: 0; font-weight: 500; cursor: pointer; background: white; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Cancel</button>
+              <button onclick="confirmCoachSelection()" id="confirm-coach-btn" style="padding: 12px 24px; border: 2px solid #000; border-radius: 0; font-weight: 500; cursor: pointer; background: #000; color: white; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;" disabled>Start Program</button>
+            </div>
+          </div>
+        `;
+        
+        document.body.appendChild(modal);
+        modal.onclick = function(e) {
+          if (e.target === modal) {
+            closeCoachSelection();
+          }
+        };
+      }
+      
+      let selectedCoach = null;
+      
+      function selectCoach(coachId) {
+        selectedCoach = coachId;
+        
+        // Update visual selection
+        document.querySelectorAll('.coach-option').forEach(option => {
+          option.style.background = 'white';
+          option.style.borderColor = '#000';
+        });
+        
+        event.target.closest('.coach-option').style.background = '#e3f2fd';
+        event.target.closest('.coach-option').style.borderColor = '#2196f3';
+        
+        // Enable confirm button
+        document.getElementById('confirm-coach-btn').disabled = false;
+      }
+      
+      function confirmCoachSelection() {
+        if (!selectedCoach) return;
+        
+        // Store coach selection
+        localStorage.setItem('ontspannen-selected-coach', selectedCoach);
+        localStorage.setItem('ontspannen-start-date', new Date().toISOString());
+        
+        // Close modal
+        closeCoachSelection();
+        
+        // Show first session
+        showFirstSession();
+      }
+      
+      function closeCoachSelection() {
+        const modal = document.querySelector('.modal-overlay');
+        if (modal) {
+          modal.remove();
+        }
+        selectedCoach = null;
+      }
+      
+      function showFirstSession() {
+        // Show session 1 content
+        const sessionContent = `
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+            <h2 style="color: #000; margin-bottom: 16px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Session 1: Starten & Het Waarom</h2>
+            <p style="color: #000; margin-bottom: 20px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Welcome and understanding the why behind stress</p>
+            
+            <div style="margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Progress</span>
+                <span style="font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Step 1 of 3</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: #f0f0f0; border: 1px solid #000;">
+                <div style="width: 33%; height: 100%; background: #000;"></div>
+              </div>
+            </div>
+            
+            <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 24px; margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="color: #000; margin: 0; font-size: 20px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Welkom: Start je Veerkracht-Streak</h3>
+                <span style="padding: 4px 12px; border: 2px solid #000; border-radius: 0; font-size: 12px; font-weight: 500; background: #e3f2fd; color: #1976d2; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Introduction</span>
+              </div>
+              
+              <div style="margin: 16px 0;">
+                <div style="width: 100%; height: 200px; background: #f5f5f5; border: 2px solid #000; border-radius: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease;">
+                  <div style="font-size: 48px; color: #000; margin-bottom: 12px;">▶</div>
+                  <div style="font-size: 16px; font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Welcome Video</div>
+                  <div style="font-size: 14px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">2:30</div>
+                </div>
+              </div>
+              
+              <div style="display: flex; justify-content: space-between; margin-top: 24px; padding-top: 20px; border-top: 1px solid #000;">
+                <button style="padding: 12px 24px; border: 2px solid #000; border-radius: 0; font-weight: 500; cursor: pointer; background: white; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;" disabled>← Previous</button>
+                <button onclick="nextStep()" style="padding: 12px 24px; border: 2px solid #000; border-radius: 0; font-weight: 500; cursor: pointer; background: #000; color: white; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Next Step →</button>
+              </div>
+            </div>
+            
+            <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-top: 24px;">
+              <h3 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Additional Resources</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #000; border-radius: 0; cursor: pointer; transition: all 0.2s ease;" onclick="alert('Opening: Verdieping: De wetenschap achter de stress-cirkel')">
+                  <div style="font-size: 16px;">📚</div>
+                  <div style="color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Verdieping: De wetenschap achter de stress-cirkel</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #000; border-radius: 0; cursor: pointer; transition: all 0.2s ease;" onclick="alert('Opening: Tips: Het verschil tussen mindfulness en ontspanningsoefeningen')">
+                  <div style="font-size: 16px;">📚</div>
+                  <div style="color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Tips: Het verschil tussen mindfulness en ontspanningsoefeningen</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #000; border-radius: 0; cursor: pointer; transition: all 0.2s ease;" onclick="alert('Opening: Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd')">
+                  <div style="font-size: 16px;">📚</div>
+                  <div style="color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #000; border-radius: 0; cursor: pointer; transition: all 0.2s ease;" onclick="alert('Opening: Uitleg: Uitleg over de Monitor en het meten van voortgang')">
+                  <div style="font-size: 16px;">📚</div>
+                  <div style="color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Uitleg: Uitleg over de Monitor en het meten van voortgang</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Replace the ontspannen-program section content
+        const programSection = document.getElementById('ontspannen-program');
+        programSection.innerHTML = sessionContent;
+      }
+      
+      function nextStep() {
+        alert('Moving to next step... (This would navigate to the next step in the session)');
+      }
+
+      // Show dashboard by default
+      showSection('dashboard');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,810 @@
+/* ============================================
+   THERAPIELAND MOBILE - MAIN STYLES
+   ============================================ */
+
+body { 
+  margin: 0; 
+  padding: 0; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+  background: white; 
+}
+
+.mobile-container { 
+  padding: 8px; 
+  padding-bottom: 100px; 
+}
+
+.mobile-header { 
+  background: white; 
+  border: 2px solid #000; 
+  border-radius: 0; 
+  padding: 16px; 
+  margin-bottom: 16px; 
+  text-align: center; 
+}
+
+.mobile-header-title {
+  color: #000;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.mobile-widget { 
+  background: white; 
+  border: 2px solid #000; 
+  border-radius: 0; 
+  padding: 12px; 
+  margin-bottom: 12px; 
+  cursor: pointer; 
+  transition: all 0.2s ease; 
+}
+
+.mobile-widget:hover { 
+  border-color: #000; 
+  background: #f5f5f5; 
+  transform: translateY(-2px); 
+}
+
+.mobile-widget-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 12px; 
+}
+
+.mobile-widget-title { 
+  font-size: 16px; 
+  font-weight: 600; 
+  color: #000; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-widget-description { 
+  font-size: 14px; 
+  color: #000; 
+  line-height: 1.4; 
+  margin-bottom: 8px; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-widget-action { 
+  display: none; 
+}
+
+.mobile-video-container { 
+  margin: 12px 0; 
+}
+
+.mobile-video-placeholder { 
+  width: 100%; 
+  height: 120px; 
+  background: #f5f5f5; 
+  border: 2px solid #000; 
+  border-radius: 0; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  position: relative; 
+  cursor: pointer; 
+}
+
+.mobile-video-play-button { 
+  font-size: 32px; 
+  color: #000; 
+  margin-bottom: 8px; 
+}
+
+.mobile-video-title { 
+  font-size: 14px; 
+  font-weight: 500; 
+  color: #000; 
+  margin-bottom: 4px; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-video-duration { 
+  font-size: 12px; 
+  color: #000; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-section { 
+  display: none; 
+}
+
+.mobile-section.active { 
+  display: block; 
+}
+
+.mobile-nav { 
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  height: 70px; 
+  background: white; 
+  border: 3px solid #000; 
+  display: flex; 
+  z-index: 1000; 
+  margin: 0; 
+  box-sizing: border-box; 
+  transition: transform 0.3s ease; 
+}
+
+.mobile-nav.hidden { 
+  transform: translateY(100%); 
+}
+
+.mobile-nav-btn { 
+  flex: 1; 
+  padding: 20px 8px; 
+  text-align: center; 
+  cursor: pointer; 
+  border-right: 3px solid #000; 
+  transition: all 0.3s ease; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  position: relative; 
+  overflow: hidden; 
+}
+
+.mobile-nav-btn:last-child { 
+  border-right: none; 
+}
+
+.mobile-nav-btn.active { 
+  background: #f5f5f5; 
+  color: #000; 
+}
+
+/* Touch/Active state for mobile */
+.mobile-nav-btn:active { 
+  transform: scale(0.95); 
+  background: #e0e0e0;
+  transition: all 0.1s ease;
+}
+
+/* Focus state for accessibility */
+.mobile-nav-btn:focus { 
+  outline: 3px solid #007bff; 
+  outline-offset: -3px;
+  background: #e3f2fd;
+}
+
+/* Ripple effect for touch feedback */
+.mobile-nav-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0,0,0,0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-nav-btn:active::before {
+  width: 200px;
+  height: 200px;
+}
+
+.mobile-nav-icon { 
+  font-size: 18px; 
+  margin-bottom: 4px; 
+  color: #000; 
+}
+
+.mobile-nav-icon svg {
+  fill: #000;
+}
+
+.mobile-nav-label { 
+  font-size: 10px; 
+  color: #000; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+  font-weight: 500; 
+}
+
+.mobile-topbar { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  height: 60px; 
+  background: white; 
+  border-bottom: 3px solid #000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 0 16px; 
+  z-index: 1000; 
+  transition: transform 0.3s ease; 
+}
+
+.mobile-topbar.hidden { 
+  transform: translateY(-100%); 
+}
+
+.mobile-topbar-left { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+.mobile-topbar-title { 
+  font-size: 18px; 
+  font-weight: 600; 
+  color: #000; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-topbar-right { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+.mobile-fab { 
+  position: fixed; 
+  bottom: 90px; 
+  right: 16px; 
+  width: 56px; 
+  height: 56px; 
+  background: white; 
+  border: 3px solid #000; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  cursor: pointer; 
+  z-index: 999; 
+  transition: all 0.3s ease; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+.mobile-fab:hover { 
+  transform: scale(1.1); 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+}
+
+.mobile-fab.hidden { 
+  transform: translateY(100%); 
+}
+
+.mobile-fab-icon { 
+  font-size: 24px; 
+  color: #000; 
+}
+
+.mobile-fab-icon svg { 
+  width: 24px; 
+  height: 24px; 
+  fill: #000; 
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb { 
+  display: flex; 
+  align-items: center; 
+  padding: 8px 12px; 
+  background: white; 
+  border: 1px solid #000; 
+  border-radius: 0; 
+  margin-bottom: 12px; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+  z-index: 1001; 
+}
+
+.breadcrumb-item { 
+  display: flex; 
+  align-items: center; 
+  gap: 4px; 
+  cursor: pointer; 
+  padding: 4px 8px; 
+  border-radius: 0; 
+  transition: all 0.2s ease; 
+  color: #000; 
+  border: 1px solid transparent; 
+}
+
+.breadcrumb-item:hover { 
+  background: #f5f5f5; 
+  border-color: #000; 
+  transform: translateY(-1px); 
+}
+
+.breadcrumb-item.current { 
+  cursor: default; 
+  font-weight: 500; 
+  color: #000; 
+  background: #e0e0e0; 
+  border-color: #000; 
+}
+
+.breadcrumb-separator { 
+  margin: 0 6px; 
+  color: #666; 
+}
+
+.breadcrumb-icon { 
+  font-size: 14px; 
+}
+
+.breadcrumb-text { 
+  font-size: 12px; 
+  font-weight: 500; 
+}
+
+/* Notifications */
+.mobile-notification-container { 
+  background: white; 
+  border: 2px solid #000; 
+  border-radius: 0; 
+  padding: 16px; 
+  margin-bottom: 16px; 
+}
+
+.mobile-notification-header { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 16px; 
+}
+
+.mobile-notification-title { 
+  font-size: 18px; 
+  font-weight: 600; 
+  color: #000; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-notification-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+
+.mobile-notification-item { 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 12px; 
+  padding: 12px; 
+  background: #f8f9fa; 
+  border: 1px solid #ddd; 
+  border-radius: 0; 
+  transition: all 0.2s ease; 
+}
+
+.mobile-notification-item:hover { 
+  background: #e9ecef; 
+  border-color: #000; 
+}
+
+.mobile-notification-item:last-child { 
+  border-bottom: none; 
+}
+
+.mobile-notification-icon { 
+  width: 32px; 
+  height: 32px; 
+  background: white; 
+  border: 2px solid #000; 
+  border-radius: 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  flex-shrink: 0; 
+}
+
+.mobile-notification-content { 
+  flex: 1; 
+}
+
+.mobile-notification-title { 
+  font-size: 14px; 
+  font-weight: 500; 
+  color: #000; 
+  margin-bottom: 4px; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-notification-text { 
+  font-size: 12px; 
+  color: #000; 
+  margin-bottom: 4px; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+.mobile-notification-time { 
+  font-size: 11px; 
+  color: #000; 
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; 
+}
+
+/* ============================================
+   SESSION CONTENT & NAVIGATION STYLES
+   ============================================ */
+
+/* Session Container */
+.session-container {
+  background: white;
+  border: 2px solid #000;
+  border-radius: 0;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.session-title {
+  color: #000;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.session-duration {
+  color: #666;
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+/* Video Placeholder */
+.video-placeholder {
+  background: #f0f0f0;
+  border: 2px solid #000;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.video-placeholder-content {
+  text-align: center;
+}
+
+.video-play-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.video-title {
+  font-size: 16px;
+  color: #000;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-weight: 500;
+}
+
+.video-subtitle {
+  font-size: 14px;
+  color: #666;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+  margin-top: 4px;
+}
+
+/* Session Steps */
+.session-step {
+  margin-bottom: 32px;
+}
+
+.step-title {
+  color: #000;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.step-content {
+  margin-bottom: 20px;
+}
+
+/* Video Transcript Styles */
+.video-transcript-header {
+  color: #000;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.video-transcript-header:hover {
+  opacity: 0.8;
+}
+
+.expand-collapse-caret {
+  font-size: 14px;
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.video-transcript-content {
+  background: #f8f9fa;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.video-transcript-content.is-collapsed {
+  display: none;
+}
+
+.transcript-text {
+  color: #000;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.transcript-text-bold {
+  color: #000;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.compensation-model-box {
+  background: #fff3e0;
+  border: 1px solid #ff9800;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.compensation-model-text {
+  color: #000;
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+/* Action Boxes */
+.action-box {
+  background: #e8f5e8;
+  border: 1px solid #4caf50;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.action-title {
+  color: #000;
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.action-description {
+  color: #000;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.action-subtitle {
+  color: #000;
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.action-instruction {
+  color: #000;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+/* Input Fields */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.input-label {
+  color: #000;
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-weight: 500;
+}
+
+.textarea-input {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #000;
+  padding: 8px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+  box-sizing: border-box;
+}
+
+.textarea-input-large {
+  height: 50px;
+}
+
+/* Session Navigation */
+.session-navigation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.navigation-button {
+  background: transparent;
+  border: 2px solid;
+  padding: 12px 24px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navigation-button:hover {
+  opacity: 0.8;
+}
+
+.navigation-button--previous-next {
+  color: #4caf50;
+  border-color: #4caf50;
+}
+
+.navigation-button--disabled {
+  color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.navigation-button--disabled:hover {
+  opacity: 0.6;
+}
+
+/* Special Content Boxes */
+.compensation-model-box {
+  background: #fff3e0;
+  border: 1px solid #ff9800;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.compensation-model-text {
+  color: #000;
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+/* Personal Guide Table */
+.personal-guide-table-container {
+  background: #f8f9fa;
+  border: 2px solid #000;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.personal-guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.personal-guide-table-header {
+  background: #e8f5e8;
+}
+
+.personal-guide-table-cell {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.personal-guide-table-cell--category {
+  font-weight: bold;
+}
+
+.personal-guide-table-cell--input {
+  border: 1px solid #000;
+  padding: 8px;
+}
+
+.personal-guide-table-textarea {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #000;
+  padding: 4px;
+  font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .mobile-container {
+    padding: 4px;
+    padding-bottom: 80px;
+  }
+  
+  .mobile-nav {
+    height: 60px;
+  }
+  
+  .mobile-nav-btn {
+    padding: 16px 4px;
+  }
+  
+  .mobile-nav-icon {
+    font-size: 16px;
+  }
+  
+  .mobile-nav-label {
+    font-size: 9px;
+  }
+  
+  .session-container {
+    padding: 16px;
+  }
+  
+  .session-title {
+    font-size: 20px;
+  }
+  
+  .step-title {
+    font-size: 18px;
+  }
+  
+  .video-placeholder {
+    height: 150px;
+  }
+  
+  .video-play-icon {
+    font-size: 36px;
+  }
+  
+  .session-navigation-container {
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .navigation-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-container {
+    padding: 2px;
+    padding-bottom: 70px;
+  }
+  
+  .session-container {
+    padding: 12px;
+  }
+  
+  .session-title {
+    font-size: 18px;
+  }
+  
+  .step-title {
+    font-size: 16px;
+  }
+  
+  .video-placeholder {
+    height: 120px;
+  }
+  
+  .video-play-icon {
+    font-size: 28px;
+  }
+  
+  .session-navigation-container {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .navigation-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}

@@ -10,11 +10,420 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+      .mobile-container { padding: 8px; padding-bottom: 100px; }
+      .mobile-header { background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px; text-align: center; }
+      .mobile-widget { background: white; border: 2px solid #000; border-radius: 0; padding: 12px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s ease; }
+      .mobile-widget:hover { border-color: #000; background: #f5f5f5; transform: translateY(-2px); }
+      .mobile-widget-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+      .mobile-widget-title { font-size: 16px; font-weight: 600; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-widget-description { font-size: 14px; color: #000; line-height: 1.4; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-widget-action { display: none; }
+      .mobile-video-container { margin: 12px 0; }
+      .mobile-video-placeholder { width: 100%; height: 120px; background: #f5f5f5; border: 2px solid #000; border-radius: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; cursor: pointer; }
+      .mobile-video-play-button { font-size: 32px; color: #000; margin-bottom: 8px; }
+      .mobile-video-title { font-size: 14px; font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-video-duration { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-section { display: none; }
+      .mobile-section.active { display: block; }
+      .mobile-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: white; border: 3px solid #000; display: flex; z-index: 1000; margin: 0; box-sizing: border-box; transition: transform 0.3s ease; }
+      .mobile-nav.hidden { transform: translateY(100%); }
+      .mobile-nav-btn { flex: 1; padding: 20px 8px; text-align: center; cursor: pointer; border-right: 3px solid #000; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+      .mobile-nav-btn:last-child { border-right: none; }
+      .mobile-nav-btn.active { background: #f5f5f5; color: #000; }
+      
+      /* Touch/Active state for mobile */
+      .mobile-nav-btn:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        transition: all 0.1s ease;
+      }
+      
+      /* Focus state for accessibility */
+      .mobile-nav-btn:focus { 
+        outline: 3px solid #007bff; 
+        outline-offset: -3px;
+        background: #e3f2fd;
+      }
+      
+      /* Ripple effect for touch feedback */
+      .mobile-nav-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(0,0,0,0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease;
+        pointer-events: none;
+      }
+      
+      .mobile-nav-btn:active::before {
+        width: 100px;
+        height: 100px;
+      }
+      
+      /* Icon animation on touch */
+      .mobile-nav-btn:active .mobile-nav-icon {
+        transform: scale(0.9);
+        transition: transform 0.1s ease;
+      }
+      .mobile-nav-label { font-size: 11px; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; color: #666; }
+      .mobile-nav-btn.active .mobile-nav-label { color: #000; }
+      .mobile-nav-icon { display: block; margin-bottom: 2px; color: #666; }
+      .mobile-nav-btn.active .mobile-nav-icon { color: #000; }
+      .mobile-nav-icon svg { fill: #666 !important; }
+      .mobile-nav-btn.active .mobile-nav-icon svg { fill: #000 !important; }
+      .mobile-nav-icon svg path { fill: #666 !important; }
+      .mobile-nav-btn.active .mobile-nav-icon svg path { fill: #000 !important; }
+      .mobile-care-plan { background: white; border: 2px solid #000; border-radius: 0; padding: 16px; margin-bottom: 16px; }
+>>>>>>> 95746e1 (Mobile: notifications page, bell navigation, removed dropdown/overlay & dark mode toggle, help avatar '?', bottom nav icons, updated My Therapieland icon)
+      .mobile-care-plan-name { font-size: 18px; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-care-plan-status { font-size: 14px; color: #000; font-weight: 500; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-program-item { background: white; border: 2px solid #000; border-radius: 0; padding: 8px; margin-bottom: 6px; }
+      .mobile-program-name { font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-program-description { font-size: 12px; color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-progress-bar { background: #000; height: 4px; border-radius: 0; margin: 8px 0; }
+      .mobile-progress-text { font-size: 12px; color: #000; text-align: right; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-chat-item { display: flex; align-items: center; gap: 12px; padding: 12px; border: 2px solid #000; border-radius: 0; margin-bottom: 8px; background: white; }
+      .mobile-chat-avatar { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; color: #000; font-size: 16px; }
+      .mobile-chat-content { flex: 1; }
+      .mobile-chat-name { font-weight: 500; color: #000; margin-bottom: 2px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-chat-message { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-chat-time { font-size: 12px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-fab { position: fixed; bottom: 90px; right: 20px; width: 56px; height: 56px; background: white; border: 2px solid #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: transform 0.3s ease, bottom 0.3s ease, box-shadow 0.3s ease; }
+      .mobile-fab:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        transition: all 0.1s ease;
+      }
+      .mobile-fab:focus { 
+        outline: 3px solid #007bff; 
+        outline-offset: 3px;
+      }
+      .mobile-fab.hidden { transform: translateY(100%); }
+      .mobile-fab-icon { font-size: 24px; color: #000; }
+      .mobile-fab-icon svg { width: 24px; height: 24px; fill: #000; }
+      
+      /* Breadcrumb Navigation */
+      .breadcrumb { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #000; border-radius: 0; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; z-index: 1001; }
+      .breadcrumb-item { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 4px 8px; border-radius: 0; transition: all 0.2s ease; color: #000; border: 1px solid transparent; }
+      .breadcrumb-item:hover { background: #f5f5f5; border-color: #000; transform: translateY(-1px); }
+      .breadcrumb-item.current { cursor: default; font-weight: 500; color: #000; background: #e0e0e0; border-color: #000; }
+      .breadcrumb-separator { margin: 0 6px; color: #666; }
+      .breadcrumb-icon { font-size: 12px; }
+      .breadcrumb-text { font-size: 11px; }
+      
+      .mobile-topbar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: white; border-bottom: 2px solid #000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; transition: transform 0.3s ease; }
+      .mobile-topbar.hidden { transform: translateY(-100%); }
+      .mobile-topbar-left { display: flex; align-items: center; }
+      .mobile-topbar-right { display: flex; align-items: center; gap: 16px; }
+      .mobile-topbar-icon { width: 40px; height: 40px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; }
+      .mobile-topbar-icon:active { 
+        transform: scale(0.95); 
+        background: #e0e0e0;
+        transition: all 0.1s ease;
+      }
+      .mobile-topbar-icon:focus { 
+        outline: 2px solid #007bff; 
+        outline-offset: 2px;
+      }
+      .mobile-topbar-icon svg { width: 20px; height: 20px; fill: #000; }
+      .mobile-content { margin-top: 60px; padding: 8px; padding-bottom: 80px; }
+      .mobile-dropdown { position: fixed; top: 60px; right: 20px; width: 300px; background: white; border: 2px solid #000; border-radius: 0; z-index: 1002; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+      .mobile-dropdown-header { padding: 16px; border-bottom: 2px solid #000; background: #f5f5f5; }
+      .mobile-dropdown-title { font-size: 16px; font-weight: 500; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin: 0; }
+      .mobile-notification-item { padding: 12px 16px; border-bottom: 1px solid #000; display: flex; align-items: flex-start; gap: 12px; }
+      .mobile-notification-item:last-child { border-bottom: none; }
+      .mobile-notification-icon { width: 32px; height: 32px; background: white; border: 2px solid #000; border-radius: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .mobile-notification-content { flex: 1; }
+      .mobile-notification-title { font-size: 14px; font-weight: 500; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-notification-text { font-size: 12px; color: #000; margin-bottom: 4px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      .mobile-notification-time { font-size: 11px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; }
+      
+      /* ============================================
+         SESSION CONTENT & NAVIGATION STYLES
+         ============================================ */
+      
+      /* Session Container */
+      .session-container {
+        background: white;
+        border: 2px solid #000;
+        border-radius: 0;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+      
+      .session-title {
+        color: #000;
+        margin-bottom: 8px;
+        font-size: 24px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      .session-duration {
+        color: #666;
+        margin-bottom: 24px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      /* Video Placeholder */
+      .video-placeholder {
+        background: #f0f0f0;
+        border: 2px solid #000;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+      
+      .video-placeholder-content {
+        text-align: center;
+      }
+      
+      .video-play-icon {
+        font-size: 48px;
+        margin-bottom: 12px;
+      }
+      
+      .video-title {
+        font-size: 16px;
+        color: #000;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+        font-weight: 500;
+      }
+      
+      .video-subtitle {
+        font-size: 14px;
+        color: #666;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+        margin-top: 4px;
+      }
+      
+      /* Session Steps */
+      .session-step {
+        margin-bottom: 32px;
+      }
+      
+      .step-title {
+        color: #000;
+        margin-bottom: 16px;
+        font-size: 20px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      .step-content {
+        margin-bottom: 20px;
+      }
+      
+      /* Video Transcript Styles */
+      .video-transcript-header {
+        color: #000;
+        margin-bottom: 12px;
+        font-size: 16px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+      
+      .video-transcript-header:hover {
+        opacity: 0.8;
+      }
+      
+      .expand-collapse-caret {
+        font-size: 14px;
+        margin-left: 8px;
+        transition: transform 0.2s ease;
+      }
+      
+      .video-transcript-content {
+        background: #f8f9fa;
+        padding: 16px;
+        margin-bottom: 16px;
+        display: block;
+      }
+      
+      .video-transcript-content.is-collapsed {
+        display: none;
+      }
+      
+      .transcript-text {
+        color: #000;
+        margin-bottom: 12px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      .transcript-text-bold {
+        color: #000;
+        font-weight: 600;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      /* Action Boxes */
+      .action-box {
+        background: #e8f5e8;
+        border: 1px solid #4caf50;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      
+      .action-title {
+        color: #000;
+        margin-bottom: 8px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      .action-description {
+        color: #000;
+        margin-bottom: 12px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      .action-subtitle {
+        color: #000;
+        margin-bottom: 8px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      .action-instruction {
+        color: #000;
+        margin-bottom: 12px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      /* Input Fields */
+      .input-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      
+      .input-label {
+        color: #000;
+        margin-bottom: 4px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+        font-weight: 500;
+      }
+      
+      .textarea-input {
+        width: 100%;
+        height: 60px;
+        border: 1px solid #000;
+        padding: 8px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+        box-sizing: border-box;
+      }
+      
+      .textarea-input-large {
+        height: 50px;
+      }
+      
+      /* Session Navigation */
+      .session-navigation-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding: 20px;
+        gap: 20px;
+      }
+      
+      .navigation-button {
+        background: transparent;
+        border: 2px solid;
+        padding: 12px 24px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      
+      .navigation-button:hover {
+        opacity: 0.8;
+      }
+      
+      .navigation-button--previous-next {
+        color: #4caf50;
+        border-color: #4caf50;
+      }
+      
+      .navigation-button--disabled {
+        color: #ccc;
+        border-color: #ccc;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      
+      .navigation-button--disabled:hover {
+        opacity: 0.6;
+      }
+      
+      /* Special Content Boxes */
+      .compensation-model-box {
+        background: #fff3e0;
+        border: 1px solid #ff9800;
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      
+      .compensation-model-text {
+        color: #000;
+        margin-bottom: 8px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      /* Personal Guide Table */
+      .personal-guide-table-container {
+        background: #f8f9fa;
+        border: 2px solid #000;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      
+      .personal-guide-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+      }
+      
+      .personal-guide-table-header {
+        background: #e8f5e8;
+      }
+      
+      .personal-guide-table-cell {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+        font-weight: bold;
+      }
+      
+      .personal-guide-table-cell--category {
+        font-weight: bold;
+      }
+      
+      .personal-guide-table-cell--input {
+        border: 1px solid #000;
+        padding: 8px;
+      }
+      
+      .personal-guide-table-textarea {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #000;
+        padding: 4px;
+        font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
+        box-sizing: border-box;
+      }
+      
+  </head>
   <body>
     <!-- Mobile Top Bar -->
     <div class="mobile-topbar">
       <div class="mobile-topbar-left">
-        <h1 class="mobile-topbar-title">Therapieland</h1>
+        <h1 style="color: #000; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin: 0;">Therapieland</h1>
       </div>
       <div class="mobile-topbar-right">
         <div class="mobile-topbar-icon" onclick="openNotifications()">
@@ -44,7 +453,7 @@
             <span class="breadcrumb-text">Dashboard</span>
           </div>
         </div>
-        <h2 class="mobile-header-title">Dashboard</h2>
+        <h2 style="color: #000; margin-bottom: 16px; font-size: 18px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Dashboard</h2>
         
         <!-- Widget: Working On -->
         <div class="mobile-widget" onclick="showOntspannenProgram()">
@@ -681,7 +1090,7 @@
     <div class="mobile-nav">
       <div class="mobile-nav-btn active" onclick="showSection('dashboard')">
         <span class="mobile-nav-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
           </svg>
         </span>
@@ -689,7 +1098,7 @@
       </div>
       <div class="mobile-nav-btn" onclick="showSection('care-plan')">
         <span class="mobile-nav-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
             <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H8v-2h4v2zm6-4H8v-2h10v2zm0-4H8V7h10v2z"/>
           </svg>
         </span>
@@ -697,11 +1106,12 @@
       </div>
       <div class="mobile-nav-btn" onclick="showSection('chat')">
         <span class="mobile-nav-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="fill:#000;">
             <path d="M20 2H4c-1.1 0-2 .9-2 2v14l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
           </svg>
         </span>
         <div class="mobile-nav-label">Chat</div>
+      </div>
       </div>
     </div>
 
@@ -1019,24 +1429,24 @@
             </div>
           </div>
           
-          <div class="session-container">
-            <h2 class="session-title">Sessie 2 - Jouw Spanning Herkennen</h2>
-            <p class="session-duration">7-10 minuten</p>
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+            <h2 style="color: #000; margin-bottom: 8px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sessie 2 - Jouw Spanning Herkennen</h2>
+            <p style="color: #666; margin-bottom: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7-10 minuten</p>
             
             <!-- Video Introduction -->
-            <div class="video-placeholder">
-              <div class="video-placeholder-content">
-                <div class="video-play-icon">▶️</div>
-                <div class="video-title">Leren Lezen: Jouw Unieke Signalen</div>
-                <div class="video-subtitle">Video Transcript</div>
+            <div style="background: #f0f0f0; border: 2px solid #000; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <div style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 12px;">▶️</div>
+                <div style="font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">Leren Lezen: Jouw Unieke Signalen</div>
+                <div style="font-size: 14px; color: #666; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin-top: 4px;">Video Transcript</div>
               </div>
             </div>
             
             <!-- Stap 1: De Lichaamsscan -->
-            <div class="session-step">
-              <h3 class="step-title">Stap 1: De Lichaamsscan (Vroege Signalen)</h3>
+            <div style="margin-bottom: 32px;">
+              <h3 style="color: #000; margin-bottom: 16px; font-size: 20px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Stap 1: De Lichaamsscan (Vroege Signalen)</h3>
               
-              <div class="step-content">
+              <div style="margin-bottom: 20px;">
                 <h4 class="video-transcript-header" onclick="toggleTranscript('session2-transcript')">
                   Video Transcript <span id="session2-caret" class="expand-collapse-caret">▼</span>
                 </h4>
@@ -1118,57 +1528,57 @@
             </div>
           </div>
           
-          <div class="session-container">
-            <h2 class="session-title">Sessie 3 - Balans: Draagkracht vs. Last</h2>
-            <p class="session-duration">6-8 minuten</p>
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+            <h2 style="color: #000; margin-bottom: 8px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sessie 3 - Balans: Draagkracht vs. Last</h2>
+            <p style="color: #666; margin-bottom: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">6-8 minuten</p>
             
             <!-- Video Introduction -->
-            <div class="video-placeholder">
-              <div class="video-placeholder-content">
-                <div class="video-play-icon">▶️</div>
-                <div class="video-title">De Weegschaal van Stress</div>
-                <div class="video-subtitle">Video Transcript</div>
+            <div style="background: #f0f0f0; border: 2px solid #000; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <div style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 12px;">▶️</div>
+                <div style="font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">De Weegschaal van Stress</div>
+                <div style="font-size: 14px; color: #666; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin-top: 4px;">Video Transcript</div>
               </div>
             </div>
             
             <!-- Stap 1: De Weegschaal -->
-            <div class="session-step">
-              <h3 class="step-title">Stap 1: De Weegschaal (De Balans Test)</h3>
+            <div style="margin-bottom: 32px;">
+              <h3 style="color: #000; margin-bottom: 16px; font-size: 20px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Stap 1: De Weegschaal (De Balans Test)</h3>
               
-              <div class="step-content">
-                <h4 class="video-transcript-header" onclick="toggleTranscript('session3-transcript')">
-                  Video Transcript <span id="session3-caret" class="expand-collapse-caret">▼</span>
+              <div style="margin-bottom: 20px;">
+                <h4 class="transcript-header" onclick="toggleTranscript('session3-transcript')">
+                  Video Transcript <span id="session3-caret" class="transcript-caret">▼</span>
                 </h4>
                 
-                <div id="session3-transcript" class="video-transcript-content">
-                  <p class="transcript-text">Spanning ontstaat niet zomaar. Het is een direct gevolg van een disbalans tussen twee factoren: draaglast en draagkracht. Het is nuttig om dit te zien als een weegschaal in je leven.</p>
+                <div id="session3-transcript" class="transcript-content">
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Spanning ontstaat niet zomaar. Het is een direct gevolg van een disbalans tussen twee factoren: draaglast en draagkracht. Het is nuttig om dit te zien als een weegschaal in je leven.</p>
                   
-                  <p class="transcript-text">De draaglast is alles wat op dat moment energie van je vraagt. Dit zijn niet alleen de grote, overduidelijke stressoren (een verbouwing, ziekte, ruzie, of een krappe deadline), maar ook de kleinere, dagelijkse irritaties. Denk aan een lange rij in de supermarkt, een gemiste bus, of een telefoontje dat langer duurt dan gepland. Al deze dingen samen vormen de last die je met je meedraagt.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">De draaglast is alles wat op dat moment energie van je vraagt. Dit zijn niet alleen de grote, overduidelijke stressoren (een verbouwing, ziekte, ruzie, of een krappe deadline), maar ook de kleinere, dagelijkse irritaties. Denk aan een lange rij in de supermarkt, een gemiste bus, of een telefoontje dat langer duurt dan gepland. Al deze dingen samen vormen de last die je met je meedraagt.</p>
                   
-                  <p class="transcript-text">Tegenover deze last staat je draagkracht. Dit is jouw vermogen om met die last om te gaan. Dit is hoeveel veerkracht, energie en rust je op dat moment bezit. Draagkracht is heel dynamisch.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Tegenover deze last staat je draagkracht. Dit is jouw vermogen om met die last om te gaan. Dit is hoeveel veerkracht, energie en rust je op dat moment bezit. Draagkracht is heel dynamisch.</p>
                   
-                  <p class="transcript-text">Je herkent dit vast: als je lekker in je vel zit, goed hebt geslapen en je lichamelijk fit voelt, is je draagkracht groot. Diezelfde lange rij in de supermarkt is dan irritant, maar je schudt het snel van je af. Echter, als je slecht hebt geslapen, een griepje voelt opkomen en je je zorgen maakt over een familielid, is je draagkracht klein. Plotseling veroorzaken die kleine tegenslagen (de rij in de supermarkt) een explosie van stress. De last voelt dan veel zwaarder.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Je herkent dit vast: als je lekker in je vel zit, goed hebt geslapen en je lichamelijk fit voelt, is je draagkracht groot. Diezelfde lange rij in de supermarkt is dan irritant, maar je schudt het snel van je af. Echter, als je slecht hebt geslapen, een griepje voelt opkomen en je je zorgen maakt over een familielid, is je draagkracht klein. Plotseling veroorzaken die kleine tegenslagen (de rij in de supermarkt) een explosie van stress. De last voelt dan veel zwaarder.</p>
                   
-                  <p class="transcript-text">Spanning ontstaat wanneer de draaglast structureel zwaarder is dan je draagkracht. Dit betekent dat je continu meer geeft dan je kunt ontvangen.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Spanning ontstaat wanneer de draaglast structureel zwaarder is dan je draagkracht. Dit betekent dat je continu meer geeft dan je kunt ontvangen.</p>
                   
-                  <p class="transcript-text">Daarom is ontspanning zo belangrijk: het is geen luxe, maar een noodzakelijke activiteit om je draagkracht aan te vullen. Door deze balans in kaart te brengen, kun je preventief werken. Je leert niet alleen wat je stress geeft, maar vooral welke activiteiten je kunt inzetten om je veerkracht te vergroten en de weegschaal weer in balans te krijgen.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Daarom is ontspanning zo belangrijk: het is geen luxe, maar een noodzakelijke activiteit om je draagkracht aan te vullen. Door deze balans in kaart te brengen, kun je preventief werken. Je leert niet alleen wat je stress geeft, maar vooral welke activiteiten je kunt inzetten om je veerkracht te vergroten en de weegschaal weer in balans te krijgen.</p>
                 </div>
                 
-                <div class="action-box">
-                  <h5 class="action-title">Actie: Beantwoord de Volgende Vragen</h5>
-                  <p class="action-description">Om je balans in kaart te brengen.</p>
+                <div style="background: #e8f5e8; border: 1px solid #4caf50; padding: 16px; margin-bottom: 16px;">
+                  <h5 style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Actie: Beantwoord de Volgende Vragen</h5>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Om je balans in kaart te brengen.</p>
                   
-                  <h6 class="action-subtitle">Mijn Weegschaal</h6>
+                  <h6 style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Mijn Weegschaal</h6>
                   
                   <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div class="input-container">
-                      <label class="input-label">1. Draaglast: noteer 3 dingen die op dit moment de meeste stress of spanning veroorzaken.</label>
-                      <textarea class="textarea-input textarea-input-large" placeholder="Bijvoorbeeld: werkdruk, financiële zorgen, relatieproblemen..."></textarea>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                      <label style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">1. Draaglast: noteer 3 dingen die op dit moment de meeste stress of spanning veroorzaken.</label>
+                      <textarea style="width: 100%; height: 80px; border: 1px solid #000; padding: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; box-sizing: border-box;" placeholder="Bijvoorbeeld: werkdruk, financiële zorgen, relatieproblemen..."></textarea>
                     </div>
                     
-                    <div class="input-container">
-                      <label class="input-label">2. Draagkracht: noteer 3 dingen die jou op dit moment de meeste energie geven.</label>
-                      <textarea class="textarea-input textarea-input-large" placeholder="Bijvoorbeeld: sporten, vrienden, hobby's..."></textarea>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                      <label style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">2. Draagkracht: noteer 3 dingen die jou op dit moment de meeste energie geven.</label>
+                      <textarea style="width: 100%; height: 80px; border: 1px solid #000; padding: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; box-sizing: border-box;" placeholder="Bijvoorbeeld: sporten, vrienden, hobby's..."></textarea>
                     </div>
                   </div>
                 </div>
@@ -1176,9 +1586,9 @@
             </div>
             
             <!-- Navigation -->
-            <div class="session-navigation-container">
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession2()">Vorige Sessie</button>
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession4()">Volgende Sessie</button>
+            <div class="session-navigation">
+              <button class="nav-button primary" onclick="showSession2()">Vorige Sessie</button>
+              <button class="nav-button primary" onclick="showSession4()">Volgende Sessie</button>
             </div>
           </div>
         `;
@@ -1211,74 +1621,74 @@
             </div>
           </div>
           
-          <div class="session-container">
-            <h2 class="session-title">Sessie 4 - Het Compensatiemodel</h2>
-            <p class="session-duration">6-8 minuten</p>
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+            <h2 style="color: #000; margin-bottom: 8px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sessie 4 - Het Compensatiemodel</h2>
+            <p style="color: #666; margin-bottom: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">6-8 minuten</p>
             
             <!-- Video Introduction -->
-            <div class="video-placeholder">
-              <div class="video-placeholder-content">
-                <div class="video-play-icon">▶️</div>
-                <div class="video-title">Het Tegenwicht Kiezen: De Hoofd-Hart-Hand Regel</div>
-                <div class="video-subtitle">Video Transcript</div>
+            <div style="background: #f0f0f0; border: 2px solid #000; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <div style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 12px;">▶️</div>
+                <div style="font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">Het Tegenwicht Kiezen: De Hoofd-Hart-Hand Regel</div>
+                <div style="font-size: 14px; color: #666; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin-top: 4px;">Video Transcript</div>
               </div>
             </div>
             
             <!-- Stap 1: Het Compensatiemodel -->
-            <div class="session-step">
-              <h3 class="step-title">Stap 1: Het Compensatiemodel (Kernuitleg)</h3>
+            <div style="margin-bottom: 32px;">
+              <h3 style="color: #000; margin-bottom: 16px; font-size: 20px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Stap 1: Het Compensatiemodel (Kernuitleg)</h3>
               
-              <div class="step-content">
-                <h4 class="video-transcript-header" onclick="toggleTranscript('session4-transcript')">
-                  Video Transcript <span id="session4-caret" class="expand-collapse-caret">▼</span>
+              <div style="margin-bottom: 20px;">
+                <h4 class="transcript-header" onclick="toggleTranscript('session4-transcript')">
+                  Video Transcript <span id="session4-caret" class="transcript-caret">▼</span>
                 </h4>
                 
-                <div id="session4-transcript" class="video-transcript-content">
-                  <p class="transcript-text">Hoe kies je de juiste ontspanning? Als je moe bent na een lange dag, kies je dan voor een film of een wandeling? Het antwoord ligt in het hoofd-hart-hand compensatiemodel 💆♥️✋. Dit is de kern van effectieve ontspanning.</p>
+                <div id="session4-transcript" class="transcript-content">
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Hoe kies je de juiste ontspanning? Als je moe bent na een lange dag, kies je dan voor een film of een wandeling? Het antwoord ligt in het hoofd-hart-hand compensatiemodel 💆♥️✋. Dit is de kern van effectieve ontspanning.</p>
                   
-                  <p class="transcript-text">Volgens dit model zijn er drie soorten taken die energie van je vragen:</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Volgens dit model zijn er drie soorten taken die energie van je vragen:</p>
                   
-                  <div class="compensation-model-box">
-                    <p class="transcript-text-bold"><strong>Hoofd-taken (💆):</strong> dingen waar je mentaal voor moet inspannen, zoals complexe berekeningen, concentratie, plannen en problemen oplossen.</p>
+                  <div style="background: #fff3e0; border: 1px solid #ff9800; padding: 12px; margin-bottom: 12px;">
+                    <p style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;"><strong>Hoofd-taken (💆):</strong> dingen waar je mentaal voor moet inspannen, zoals complexe berekeningen, concentratie, plannen en problemen oplossen.</p>
                   </div>
                   
-                  <div class="compensation-model-box">
-                    <p class="transcript-text-bold"><strong>Hart-taken (♥️):</strong> dingen die emotionele inspanning kosten, zoals het voeren van moeilijke gesprekken, conflicten oplossen of zorgen voor anderen.</p>
+                  <div style="background: #fce4ec; border: 1px solid #e91e63; padding: 12px; margin-bottom: 12px;">
+                    <p style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;"><strong>Hart-taken (♥️):</strong> dingen die emotionele inspanning kosten, zoals het voeren van moeilijke gesprekken, conflicten oplossen of zorgen voor anderen.</p>
                   </div>
                   
-                  <div class="compensation-model-box">
-                    <p class="transcript-text-bold"><strong>Hand-taken (✋):</strong> dingen die fysieke inspanning vergen, zoals het huishouden doen, zwaar tillen of de hele dag rondlopen.</p>
+                  <div style="background: #e8f5e8; border: 1px solid #4caf50; padding: 12px; margin-bottom: 12px;">
+                    <p style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;"><strong>Hand-taken (✋):</strong> dingen die fysieke inspanning vergen, zoals het huishouden doen, zwaar tillen of de hele dag rondlopen.</p>
                   </div>
                   
-                  <p class="transcript-text">De cruciale fout die veel mensen maken, is ontspannen met een activiteit uit dezelfde categorie. Na een dag achter de computer (hoofd-taak), ga je op de bank liggen scrollen op je telefoon (wéér een hoofd-taak). Je lijkt te rusten, maar je brein blijft bezig. De spanning in je lichaam kan dan niet weg.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">De cruciale fout die veel mensen maken, is ontspannen met een activiteit uit dezelfde categorie. Na een dag achter de computer (hoofd-taak), ga je op de bank liggen scrollen op je telefoon (wéér een hoofd-taak). Je lijkt te rusten, maar je brein blijft bezig. De spanning in je lichaam kan dan niet weg.</p>
                   
-                  <p class="transcript-text">De regel van compensatie is simpel: als je spanning voelt door een hoofd-taak, kies dan een hand- of hart-taak om te ontspannen. Ben je mentaal overbelast? Ga wandelen (hand) of bel een vriend(hart). Als je emotioneel uitgeput bent (hart), kies dan een activiteit waarbij je fysiek of mentaal uitgedaagd wordt (hand of hoofd), zoals sporten of een puzzel maken.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">De regel van compensatie is simpel: als je spanning voelt door een hoofd-taak, kies dan een hand- of hart-taak om te ontspannen. Ben je mentaal overbelast? Ga wandelen (hand) of bel een vriend(hart). Als je emotioneel uitgeput bent (hart), kies dan een activiteit waarbij je fysiek of mentaal uitgedaagd wordt (hand of hoofd), zoals sporten of een puzzel maken.</p>
                   
-                  <p class="transcript-text">Dit model helpt je de opgebouwde energie op een andere manier los te laten. Je gaat nu ontdekken hoe je dit model als jouw persoonlijke keuzemenu kunt gebruiken om altijd het juiste tegengif voor jouw spanning te vinden. Dit inzicht is de basis voor de oefeningen die nu volgen.</p>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Dit model helpt je de opgebouwde energie op een andere manier los te laten. Je gaat nu ontdekken hoe je dit model als jouw persoonlijke keuzemenu kunt gebruiken om altijd het juiste tegengif voor jouw spanning te vinden. Dit inzicht is de basis voor de oefeningen die nu volgen.</p>
                 </div>
                 
-                <div class="action-box">
-                  <h5 class="action-title">Actie: Oefen de Regel van Compensatie</h5>
-                  <p class="action-description">Gebruik de app om de regel van compensatie te oefenen (bijv. met een sleep-opdracht). Noteer de uitkomst in je notitieboek voor de zwaarste taak die je zojuist in sessie 3 hebt benoemd.</p>
+                <div style="background: #e8f5e8; border: 1px solid #4caf50; padding: 16px; margin-bottom: 16px;">
+                  <h5 style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Actie: Oefen de Regel van Compensatie</h5>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Gebruik de app om de regel van compensatie te oefenen (bijv. met een sleep-opdracht). Noteer de uitkomst in je notitieboek voor de zwaarste taak die je zojuist in sessie 3 hebt benoemd.</p>
                   
-                  <h6 class="action-subtitle">De 3 H's in Mijn Leven</h6>
-                  <p class="action-instruction">Kijk naar je draaglast (sessie 3). Noteer welk tegenwicht (hoofd, hart of hand) je voor de zwaarste taak zou kiezen om te ontspannen.</p>
+                  <h6 style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">De 3 H's in Mijn Leven</h6>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Kijk naar je draaglast (sessie 3). Noteer welk tegenwicht (hoofd, hart of hand) je voor de zwaarste taak zou kiezen om te ontspannen.</p>
                   
-                  <div class="input-container">
-                    <label class="input-label">Mijn zwaarste taak uit sessie 3:</label>
-                    <textarea class="textarea-input" placeholder="Beschrijf je zwaarste stressbron..."></textarea>
+                  <div style="display: flex; flex-direction: column; flex: 1;">
+                    <label style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">Mijn zwaarste taak uit sessie 3:</label>
+                    <textarea style="width: 100%; height: 50px; border: 1px solid #000; padding: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; box-sizing: border-box; margin-bottom: 12px;" placeholder="Beschrijf je zwaarste stressbron..."></textarea>
                     
-                    <label class="input-label">Welk tegenwicht kies ik? (💆 Hoofd / ♥️ Hart / ✋ Hand):</label>
-                    <textarea class="textarea-input" placeholder="Kies het juiste tegenwicht en leg uit waarom..."></textarea>
+                    <label style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">Welk tegenwicht kies ik? (💆 Hoofd / ♥️ Hart / ✋ Hand):</label>
+                    <textarea style="width: 100%; height: 50px; border: 1px solid #000; padding: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; box-sizing: border-box;" placeholder="Kies het juiste tegenwicht en leg uit waarom..."></textarea>
                   </div>
                 </div>
               </div>
             </div>
             
             <!-- Navigation -->
-            <div class="session-navigation-container">
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession3()">Vorige Sessie</button>
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession5()">Volgende Sessie</button>
+            <div class="session-navigation">
+              <button class="nav-button primary" onclick="showSession3()">Vorige Sessie</button>
+              <button class="nav-button primary" onclick="showSession5()">Volgende Sessie</button>
             </div>
           </div>
         `;
@@ -1311,35 +1721,35 @@
             </div>
           </div>
           
-          <div class="session-container">
-            <h2 class="session-title">Sessie 5 - Hand-Focus: Lichaam & Beweging ✋</h2>
-            <p class="session-duration">5-7 minuten (Exclusief de oefentijd)</p>
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+            <h2 style="color: #000; margin-bottom: 8px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sessie 5 - Hand-Focus: Lichaam & Beweging ✋</h2>
+            <p style="color: #666; margin-bottom: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">5-7 minuten (Exclusief de oefentijd)</p>
             
             <!-- Video Introduction -->
-            <div class="video-placeholder">
-              <div class="video-placeholder-content">
-                <div class="video-play-icon">▶️</div>
-                <div class="video-title">Knijpen & Loslaten (Hand ✋)</div>
-                <div class="video-subtitle">Video Transcript</div>
+            <div style="background: #f0f0f0; border: 2px solid #000; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <div style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 12px;">▶️</div>
+                <div style="font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">Knijpen & Loslaten (Hand ✋)</div>
+                <div style="font-size: 14px; color: #666; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin-top: 4px;">Video Transcript</div>
               </div>
             </div>
             
             <!-- Stap 1: Spanning Loslaten -->
-            <div class="session-step">
-              <h3 class="step-title">Stap 1: Spanning Loslaten (Progressieve Relaxatie)</h3>
+            <div style="margin-bottom: 32px;">
+              <h3 style="color: #000; margin-bottom: 16px; font-size: 20px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Stap 1: Spanning Loslaten (Progressieve Relaxatie)</h3>
               
-              <div class="step-content">
-                <h4 class="video-transcript-header" onclick="toggleTranscript('session5-transcript')">
-                  Video Transcript <span id="session5-caret" class="expand-collapse-caret">▼</span>
+              <div style="margin-bottom: 20px;">
+                <h4 class="transcript-header" onclick="toggleTranscript('session5-transcript')">
+                  Video Transcript <span id="session5-caret" class="transcript-caret">▼</span>
                 </h4>
                 
-                <div id="session5-transcript" class="video-transcript-content">
-                  <p class="transcript-text">Deze oefening leert je het verschil voelen tussen gespannen en ontspannen spieren door ze eerst aan te spannen en dan abrupt los te laten. Dit is een snelle methode om de spanning nu uit je lijf te krijgen.</p>
+                <div id="session5-transcript" class="transcript-content">
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Deze oefening leert je het verschil voelen tussen gespannen en ontspannen spieren door ze eerst aan te spannen en dan abrupt los te laten. Dit is een snelle methode om de spanning nu uit je lijf te krijgen.</p>
                 </div>
                 
-                <div class="action-box">
-                  <h5 class="action-title">Actie: Oefening 1 - Progressieve Relaxatie (Audio)</h5>
-                  <p class="action-description">Kies je coach (man of vrouw) en start de oefening.</p>
+                <div style="background: #e8f5e8; border: 1px solid #4caf50; padding: 16px; margin-bottom: 16px;">
+                  <h5 style="color: #000; margin-bottom: 8px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Actie: Oefening 1 - Progressieve Relaxatie (Audio)</h5>
+                  <p style="color: #000; margin-bottom: 12px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Kies je coach (man of vrouw) en start de oefening.</p>
                   
                   <!-- Audio Player Placeholder -->
                   <div style="background: #f0f0f0; border: 2px solid #000; height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
@@ -1422,9 +1832,9 @@
             </div>
             
             <!-- Navigation -->
-            <div class="session-navigation-container">
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession4()">Vorige Sessie</button>
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession6()">Volgende Sessie</button>
+            <div class="session-navigation">
+              <button class="nav-button primary" onclick="showSession4()">Vorige Sessie</button>
+              <button class="nav-button primary" onclick="showSession6()">Volgende Sessie</button>
             </div>
           </div>
         `;
@@ -1457,16 +1867,16 @@
             </div>
           </div>
           
-          <div class="session-container">
-            <h2 class="session-title">Sessie 6 - Hoofd & Hart-Focus 💆♥️</h2>
-            <p class="session-duration">5-7 minuten (Exclusief de oefentijd)</p>
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+            <h2 style="color: #000; margin-bottom: 8px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sessie 6 - Hoofd & Hart-Focus 💆♥️</h2>
+            <p style="color: #666; margin-bottom: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">5-7 minuten (Exclusief de oefentijd)</p>
             
             <!-- Video Introduction -->
-            <div class="video-placeholder">
-              <div class="video-placeholder-content">
-                <div class="video-play-icon">▶️</div>
-                <div class="video-title">Je Adem als Anker (Hoofd/Hart)</div>
-                <div class="video-subtitle">Video Transcript</div>
+            <div style="background: #f0f0f0; border: 2px solid #000; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <div style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 12px;">▶️</div>
+                <div style="font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">Je Adem als Anker (Hoofd/Hart)</div>
+                <div style="font-size: 14px; color: #666; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin-top: 4px;">Video Transcript</div>
               </div>
             </div>
             
@@ -1602,9 +2012,9 @@
             </div>
             
             <!-- Navigation -->
-            <div class="session-navigation-container">
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession5()">Vorige Sessie</button>
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession7()">Volgende Sessie</button>
+            <div class="session-navigation">
+              <button class="nav-button primary" onclick="showSession5()">Vorige Sessie</button>
+              <button class="nav-button primary" onclick="showSession7()">Volgende Sessie</button>
             </div>
           </div>
         `;
@@ -1637,16 +2047,16 @@
             </div>
           </div>
           
-          <div class="session-container">
-            <h2 class="session-title">Sessie 7 - Jouw Gepersonaliseerde Gids</h2>
-            <p class="session-duration">7-10 minuten</p>
+          <div style="background: white; border: 2px solid #000; border-radius: 0; padding: 20px; margin-bottom: 16px;">
+            <h2 style="color: #000; margin-bottom: 8px; font-size: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">Sessie 7 - Jouw Gepersonaliseerde Gids</h2>
+            <p style="color: #666; margin-bottom: 24px; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;">7-10 minuten</p>
             
             <!-- Video Introduction -->
-            <div class="video-placeholder">
-              <div class="video-placeholder-content">
-                <div class="video-play-icon">▶️</div>
-                <div class="video-title">Automatiseer je Ontspanning</div>
-                <div class="video-subtitle">Video Transcript</div>
+            <div style="background: #f0f0f0; border: 2px solid #000; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+              <div style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 12px;">▶️</div>
+                <div style="font-size: 16px; color: #000; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; font-weight: 500;">Automatiseer je Ontspanning</div>
+                <div style="font-size: 14px; color: #666; font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace; margin-top: 4px;">Video Transcript</div>
               </div>
             </div>
             
@@ -1735,9 +2145,9 @@
             </div>
             
             <!-- Navigation -->
-            <div class="session-navigation-container">
-              <button class="navigation-button navigation-button--previous-next" onclick="showSession6()">Vorige Sessie</button>
-              <button class="navigation-button navigation-button--disabled" disabled>Volgende Sessie</button>
+            <div class="session-navigation">
+              <button class="nav-button primary" onclick="showSession6()">Vorige Sessie</button>
+              <button class="nav-button disabled" disabled>Volgende Sessie</button>
             </div>
           </div>
         `;

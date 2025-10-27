@@ -1,0 +1,335 @@
+{
+  "program": {
+    "id": "ontspannen",
+    "name": "Ontspannen",
+    "description": "Direct doen en ervaren om spanning te leren beheersen",
+    "type": "e-health",
+    "totalModules": 4,
+    "totalSessions": 7,
+    "progressionType": "linear",
+    "estimatedDuration": "45-50 minuten totaal",
+    "targetAudience": "Mensen die spanning willen leren beheersen",
+    "learningObjectives": [
+      "Begrijpen waarom spanning een instinct is en persoonlijke waarschuwingssignalen herkennen",
+      "Leren categoriseren van spanning en effectieve ontspanning kiezen",
+      "Oefenen met kalmerende en cognitieve oefeningen en effectiviteit beoordelen",
+      "Geleerde lessen consolideren en ontspanningsroutines automatiseren"
+    ]
+  },
+  "modules": [
+    {
+      "id": "module-1",
+      "name": "Fundament & Inzicht",
+      "description": "De cliënt begrijpt de wetenschappelijke noodzaak van spanning en herkent persoonlijke waarschuwingssignalen",
+      "order": 1,
+      "sessions": [
+        {
+          "id": "session-1",
+          "name": "De Wetenschap van Spanning",
+          "description": "Welkom en begrijpen waarom spanning een instinct is",
+          "order": 1,
+          "estimatedTime": "6-8 minuten",
+          "isFirstSession": true,
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Welkom & Coach Keuze",
+              "type": "introduction",
+              "contentType": "video_coach",
+              "focus": "ownership",
+              "description": "Welkom! Dit programma richt zich op direct doen en ervaren om spanning te leren beheersen. Het is een training, geen snelle oplossing.",
+              "content": "Tijd om te ademen. \"Je weet dat het tijd is om te ontspannen, als je geen tijd hebt om te ontspannen.\" Kies jouw anker coach. Selecteer hieronder de coach die jou het meest aanspreekt.",
+              "videoTitle": "Ontmoet je coach: [naam coach]",
+              "videoContent": "Welkom! Ik ben [naam], jouw begeleider. Ik help je om je eigen veerkracht te ontdekken. Ik kijk ernaar uit om je door dit programma te leiden, stap voor stap."
+            },
+            {
+              "id": "step-2",
+              "title": "Het Overlevingsinstinct en het Moderne Leven",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "scientific_understanding",
+              "description": "Welkom bij de wetenschap achter spanning. Veel mensen zien stress als een fout, maar het is eigenlijk een wonder van de evolutie.",
+              "content": "Ons vermogen om spanning te voelen is een overlevingsinstinct. Dit systeem, ook wel de 'vecht-vlucht-bevries'-reactie genoemd, is ontworpen om ons in een fractie van een seconde in veiligheid te brengen.\n\nStel je voor: een konijn ziet een wolf. Binnen een tel wordt adrenaline door het lijf gepompt. De hartslag gaat omhoog, de ademhaling versnelt, het bloed stroomt naar de spieren, en deze spannen zich aan. Dit levert een snelle stoot van energie op om actie te ondernemen. Als het konijn ontsnapt, rent het de spanning uit zijn lijf, en keert het systeem terug naar rust.\n\nHet probleem is dat ons moderne brein dit mechanisme ook activeert bij niet-levensbedreigende situaties. Bij een deadline, een ruzie thuis, of zelfs bij de gedachte aan een spannend gesprek. Je lichaam reageert alsof er een wolf is, maar je zit achter je bureau. Je spant je aan en bent klaar voor actie, maar je kunt de energie niet kwijt.\n\nDeze overtollige energie blijft 'vastzitten' in je lijf. Dit leidt tot de klassieke spanningsklachten: chronische hoofdpijn, nek- en schouderklachten, of een constant gejaagd gevoel.\n\nAls deze spanning lang aanhoudt, treedt de spanningscirkel in werking. Je voelt bijvoorbeeld je hart sneller kloppen en je vraagt je af: \"Is er iets mis? Ben ik ziek?\" De zorg over de spanning veroorzaakt vervolgens nóg meer spanning, waardoor de symptomen verergeren. Hierdoor wordt het steeds moeilijker om te ontspannen, en voelt het alsof je vastzit.\n\nHet goede nieuws is dat we ons lichaam kunnen leren dat er géén wolf is. We kunnen leren deze opgebouwde energie af te voeren. Dat is precies het doel van dit programma. In de volgende stappen ga je leren hoe je de eerste signalen van dit instinct in jouw lijf kunt herkennen. Door te begrijpen dat spanning een overgevoelig, maar goedbedoeld, instinct is, kun je beginnen de regie terug te pakken.\n\nOnthoud: spanning is niet je vijand, maar een vriend met een verouderd alarmsysteem. Laten we beginnen met het afstemmen van dat alarm."
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd"
+          ]
+        },
+        {
+          "id": "session-2",
+          "name": "Jouw Spanning Herkennen",
+          "description": "Leren lezen van jouw unieke signalen",
+          "order": 2,
+          "estimatedTime": "7-10 minuten",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Jouw Unieke Signalen",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "early_recognition",
+              "description": "Leren lezen: jouw unieke signalen. De weegschaal van stress.",
+              "content": "Zoals we in de vorige sessie zagen, voelt spanning niet voor iedereen hetzelfde. Je lichaam, emoties en gedachten hebben elk hun eigen manier om de stress-status door te geven. Het is van cruciaal belang dat je leert hoe spanning zich bij jou manifesteert, zodat je kunt ingrijpen voordat het te laat is.\n\nSommige mensen zijn zich vooral bewust van lichamelijke klachten: de constante knoop in de maag, de stijve schouders die een massage nodig hebben, of het oppervlakkig en snel ademen. Anderen merken het vooral in hun emoties: je bent ineens prikkelbaar, huilt sneller dan normaal, of ergert je aan kleine dingen die je normaal zou negeren. Weer anderen merken het aan hun gedrag of gedachten: ze piekeren de hele nacht, stellen taken uit, of trekken zich terug uit sociale contacten.\n\nProbeer eens terug te denken aan een moment waarop je je echt gespannen voelde. Wat was het eerste signaal? Was het een gedachte die bleef hangen, of voelde je plotseling je hart sneller kloppen?\n\nDe meeste mensen ervaren een 'kettingreactie', maar we hebben allemaal een eerste, subtiele alarmbel. Dat ene moment dat je nog kunt zeggen: \"Hé, hier gaat het mis.\" Dat is het moment waarop je het beste kunt ingrijpen.\n\nDoor nu een inventarisatie te maken van jouw unieke signalen, bouw je een persoonlijk waarschuwingssysteem op. Later in het programma gaan we deze signalen koppelen aan de juiste ontspanningstechnieken. Het doel is om niet meer op de automatische piloot te reageren, maar om bewust te kiezen voor herstel. Neem de tijd voor de oefening; hoe nauwkeuriger je jouw signalen kunt benoemen, hoe effectiever de rest van het programma zal zijn.\n\nLaten we de test doen en jouw unieke signalen vastleggen."
+            },
+            {
+              "id": "step-2",
+              "title": "De Weegschaal van Stress",
+              "type": "assignment",
+              "contentType": "assignment",
+              "focus": "balance_understanding",
+              "description": "Spanning ontstaat niet zomaar. Het is een direct gevolg van een disbalans tussen twee factoren: draaglast en draagkracht.",
+              "content": "De draaglast is alles wat op dat moment energie van je vraagt. Dit zijn niet alleen de grote, overduidelijke stressoren (een verbouwing, ziekte, ruzie, of een krappe deadline), maar ook de kleiner, dagelijkse irritaties. Denk aan een lange rij in de supermarkt, een gemiste bus, of een telefoontje dat langer duurt dan gepland. Al deze dingen samen vormen de last die je met je meedraagt.\n\nTegenover deze last staat je draagkracht. Dit is jouw vermogen om met die last om te gaan. Dit is hoeveel veerkracht, energie en rust je op dat moment bezit. Draagkracht is heel dynamisch.\n\nJe herkent dit vast: als je lekker in je vel zit, goed hebt geslapen en je lichamelijk fit voelt, is je draagkracht groot. Diezelfde lange rij in de supermarkt is dan irritant, maar je schudt het snel van je af. Echter, als je slecht hebt geslapen, een griepje voelt opkomen en je je zorgen maakt over een familielid, is je draagkracht klein. Plotseling veroorzaken die kleine tegenslagen (de rij in de supermarkt) een explosie van stress. De last voelt dan veel zwaarder.\n\nSpanning ontstaat wanneer de draaglast structureel zwaarder is dan je draagkracht. Dit betekent dat je continu meer geeft dan je kunt ontvangen.\n\nDaarom is ontspanning zo belangrijk: het is geen luxe, maar een noodzakelijke activiteit om je draagkracht aan te vullen. Door deze balans in kaart te brengen, kun je preventief werken. Je leert niet alleen wat je stress geeft, maar vooral welke activiteiten je kunt inzetten om je veerkracht te vergroten en de weegschaal weer in balans te krijgen.",
+              "assignment": "Mijn weegschaal:\n\n1. Draaglast: noteer 3 dingen die op dit moment de meeste stress of spanning veroorzaken.\n\n2. Draagkracht: noteer 3 dingen die jou op dit moment de meeste energie geven."
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "module-2",
+      "name": "De Analyse & Keuzehulp",
+      "description": "De cliënt leert spanning categoriseren en krijgt het keuzemodel voor effectieve ontspanning",
+      "order": 2,
+      "sessions": [
+        {
+          "id": "session-3",
+          "name": "Balans: Draagkracht vs. Last",
+          "description": "De weegschaal (de balans test)",
+          "order": 3,
+          "estimatedTime": "6-8 minuten",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Het Compensatiemodel (Kernuitleg)",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "choice_model",
+              "description": "Hoe kies je de juiste ontspanning? Als je moe bent na een lange dag, kies je dan voor een film of een wandeling? Het antwoord ligt in het hoofd-hart-hand compensatiemodel 💆♥️✋.",
+              "content": "Volgens dit model zijn er drie soorten taken die energie van je vragen:\n\nHoofd-taken (💆): dingen waar je mentaal voor moet inspannen, zoals complexe berekeningen, concentratie, plannen en problemen oplossen.\n\nHart-taken (♥️): dingen die emotionele inspanning kosten, zoals het voeren van moeilijke gesprekken, conflicten oplossen of zorgen voor anderen.\n\nHand-taken (✋): dingen die fysieke inspanning vergen, zoals het huishouden doen, zwaar tillen of de hele dag rondlopen.\n\nDe cruciale fout die veel mensen maken, is ontspannen met een activiteit uit dezelfde categorie. Na een dag achter de computer (hoofd-taak), ga je op de bank liggen scrollen op je telefoon (wéér een hoofd-taak). Je lijkt te rusten, maar je brein blijft bezig. De spanning in je lichaam kan dan niet weg.\n\nDe regel van compensatie is simpel: als je spanning voelt door een hoofd-taak, kies dan een hand- of hart-taak om te ontspannen. Ben je mentaal overbelast? Ga wandelen (hand) of bel een vriend(hart). Als je emotioneel uitgeput bent (hart), kies dan een activiteit waarbij je fysiek of mentaal uitgedaagd wordt (hand of hoofd), zoals sporten of een puzzel maken.\n\nDit model helpt je de opgebouwde energie op een andere manier los te laten. Je gaat nu ontdekken hoe je dit model als jouw persoonlijke keuzemenu kunt gebruiken om altijd het juiste tegengif voor jouw spanning te vinden. Dit inzicht is de basis voor de oefeningen die nu volgen."
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen"
+          ]
+        },
+        {
+          "id": "session-4",
+          "name": "De Keuzehulp: Hoofd-Hart-Hand",
+          "description": "Het tegenwicht kiezen: de hoofd-hart-hand regel",
+          "order": 4,
+          "estimatedTime": "8-12 minuten",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Spanning Loslaten (Progressieve Relaxatie)",
+              "type": "exercise",
+              "contentType": "video_audio",
+              "focus": "progressive_relaxation",
+              "description": "Deze oefening leert je het verschil voelen tussen gespannen en ontspannen spieren door ze eerst aan te spannen en dan abrupt los te laten.",
+              "content": "Dit is een snelle methode om de spanning nu uit je lijf te krijgen.",
+              "exercise": "Oefening 1: progressieve relaxatie (audio). Kies je coach (man of vrouw) en start de oefening."
+            },
+            {
+              "id": "step-2",
+              "title": "Ontladen door Beweging",
+              "type": "exercise",
+              "contentType": "video_exercise",
+              "focus": "movement_discharge",
+              "description": "Je lichaam moet de extra actie-energie kwijt. Kies voor intensieve beweging na hoofd-werk, of lichte beweging (yoga, tai-chi) als je lichaam al moe is.",
+              "exercise": "Oefening 2: 5 minuten lichte yoga (video met de coach)."
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "module-3",
+      "name": "De Praktijk & Verdieping",
+      "description": "De cliënt probeert kalmerende en cognitieve oefeningen uit en beoordeelt hun effectiviteit",
+      "order": 3,
+      "sessions": [
+        {
+          "id": "session-5",
+          "name": "Hand-Focus: Lichaam & Beweging",
+          "description": "Knijpen & loslaten (hand ✋)",
+          "order": 5,
+          "estimatedTime": "5-7 minuten (Exclusief de oefentijd)",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "De Extra Energie Kwijt (Hand ✋)",
+              "type": "exercise",
+              "contentType": "video_exercise",
+              "focus": "movement_discharge",
+              "description": "Intensieve beweging na hoofd-werk, of lichte beweging als je lichaam al moe is.",
+              "exercise": "Probeer een van de twee oefeningen: audio: ademruimte (3 min) of audio: ademhaling tellen (3 min)."
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen"
+          ]
+        },
+        {
+          "id": "session-6",
+          "name": "Hoofd & Hart-Focus",
+          "description": "Je adem als anker (hoofd/hart)",
+          "order": 6,
+          "estimatedTime": "5-7 minuten (Exclusief de oefentijd)",
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "Ademruimte & Tellen",
+              "type": "exercise",
+              "contentType": "audio_exercise",
+              "focus": "breathing_anchor",
+              "description": "De ademhaling is je directe knop naar rust. Diep en rustig ademen zendt een signaal van veiligheid naar je brein.",
+              "content": "We oefenen met twee technieken: ademruimte en tellen om focus te creëren."
+            },
+            {
+              "id": "step-2",
+              "title": "Visualisatie & Mindfulness",
+              "type": "exercise",
+              "contentType": "audio_exercise",
+              "focus": "mental_calm",
+              "description": "Rust in het hoofd (hoofd/hart).",
+              "content": "Mindfulness is aandachtstraining, niet het stoppen van gedachten. Visualisatie zoekt een 'veilige plek' op in je herinnering.",
+              "exercise": "Probeer de bodyscan (mindfulness) of de visualisatie (inbeelding) uit."
+            },
+            {
+              "id": "step-3",
+              "title": "Sociaal & Creatief Ontspannen",
+              "type": "exercise",
+              "contentType": "assignment",
+              "focus": "social_creative",
+              "description": "Oxytocine & creatie (hart/hand).",
+              "content": "Sociaal contact (met een klik) verlaagt spanning door het hormoon oxytocine. Creativiteit werkt als een uitlaatklep (doe het voor de actie, niet voor het resultaat).",
+              "exercise": "Noteer je favoriete creatieve en sociale uitlaatklep."
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "module-4",
+      "name": "Integratie & Gewoontevorming",
+      "description": "De cliënt consolideert geleerde lessen en automatiseert de routine",
+      "order": 4,
+      "sessions": [
+        {
+          "id": "session-7",
+          "name": "Jouw Gepersonaliseerde Gids",
+          "description": "Automatiseer je ontspanning",
+          "order": 7,
+          "estimatedTime": "7-10 minuten",
+          "isLastSession": true,
+          "steps": [
+            {
+              "id": "step-1",
+              "title": "De Routinesamensteller (Integratie & Automatisering)",
+              "type": "core_explanation",
+              "contentType": "video_text",
+              "focus": "routine_automation",
+              "description": "Gefeliciteerd! Je hebt nu de theorie achter spanning begrepen, jouw persoonlijke triggers geanalyseerd en een breed scala aan ontspanningstechnieken uitgeprobeerd.",
+              "content": "Je hebt stilgestaan bij wat bij jou voor spanning zorgt, en je weet nu ook hoe je het kunt herkennen en welke oefeningen je het meest hielpen.\n\nDe grootste uitdaging ligt nu niet in het begrijpen, maar in het doen – in het automatiseren van je nieuwe kennis. Je wilt niet langer elke dag hoeven nadenken over ontspanning, maar een routine creëren die vanzelf gaat.\n\nDat gaan we nu doen met jouw gepersonaliseerde gids.\n\nDe app heeft de oefeningen die je hoog hebt gewaardeerd bewaard en gesorteerd op basis van het hoofd-hart-hand model. Je hoeft alleen nog de laatste keuze te maken: welke van deze bewezen technieken ga je inzetten als snel hulp (als de spanning hoog is) en welke ga je implementeren als preventie (een dagelijkse of wekelijkse gewoonte)?\n\nDit is het moment om je kennis om te zetten in structurele actie. Gebruik de routinesamensteller om je favoriete methodes vast te leggen en stel je reminders in. Door je preventie-activiteiten in te plannen, houd je jouw draagkracht structureel hoog, waardoor je minder snel in de stresscirkel belandt.\n\nBlijf oefenen. Je veerkracht-streak is nu een dagelijkse herinnering aan je commitment. Je kunt altijd terug naar de bibliotheek voor diepgaande informatie. Wij wensen je veel succes met het toepassen van je nieuwe routine!",
+              "assignment": "Vul je gids in en stel je reminders in.\n\nMijn ontspanningsoverzicht: kopieer de tabel hieronder en vul deze in met je hoogst gewaardeerde oefeningen. Dit is jouw gids.\n\n| Categorie | Snel hulp (nu spanning) | Preventie (dagelijks/wekelijks) |\n|-----------|-------------------------|--------------------------------|\n| Hoofd (💆) | [Noteer 1 oefening] | [Noteer 1 routine] |\n| Hart (♥️) | [Noteer 1 oefening] | [Noteer 1 routine] |\n| Hand (✋) | [Noteer 1 oefening] | [Noteer 1 routine] |"
+            }
+          ],
+          "libraryLinks": [
+            "Verdieping: De wetenschap achter de stress-cirkel",
+            "Tips: Het verschil tussen mindfulness en ontspanningsoefeningen",
+            "Inspiratie: Ervaringsverhaal: Terugdenken aan je Kindertijd"
+          ]
+        }
+      ]
+    }
+  ],
+  "progressionRules": {
+    "type": "linear",
+    "description": "Geen sessie kan gestart worden voordat de vorige sessie is voltooid",
+    "unlockConditions": {
+      "session-1": "none",
+      "session-2": "session-1-completed",
+      "session-3": "session-2-completed",
+      "session-4": "session-3-completed",
+      "session-5": "session-4-completed",
+      "session-6": "session-5-completed",
+      "session-7": "session-6-completed"
+    }
+  },
+  "contentTypes": {
+    "video_coach": {
+      "description": "Introductievideo met coach",
+      "focus": "eigenaarschap en persoonlijke verbinding"
+    },
+    "video_text": {
+      "description": "Kernuitleg video met ondersteunende tekst",
+      "focus": "wetenschappelijk begrip en leren"
+    },
+    "video_audio": {
+      "description": "Korte uitleg video met audio-oefening",
+      "focus": "praktische toepassing"
+    },
+    "video_exercise": {
+      "description": "Korte uitleg video met oefening demonstratie",
+      "focus": "fysieke praktijk"
+    },
+    "audio_exercise": {
+      "description": "Korte uitleg met audio-oefening",
+      "focus": "begeleide praktijk"
+    },
+    "assignment": {
+      "description": "Korte uitleg met praktische opdracht",
+      "focus": "actieve betrokkenheid"
+    },
+    "reflection": {
+      "description": "Reflectie-oefening met opdracht",
+      "focus": "consolidatie en personalisatie"
+    }
+  },
+  "focusAreas": {
+    "ownership": "Persoonlijk eigenaarschap en commitment opbouwen",
+    "scientific_understanding": "Begrijpen van de wetenschap achter spanning",
+    "early_recognition": "Leren herkennen van persoonlijke spanningssignalen vroeg",
+    "balance_understanding": "Begrijpen van de balans tussen draagkracht en last",
+    "choice_model": "Leren van het Hoofd-Hart-Hand keuzemodel",
+    "progressive_relaxation": "Leren van progressieve relaxatietechnieken",
+    "movement_discharge": "Beweging gebruiken om energie af te voeren",
+    "breathing_anchor": "Ademhaling gebruiken als anker",
+    "mental_calm": "Mentale rust bereiken door visualisatie",
+    "social_creative": "Sociale en creatieve activiteiten gebruiken voor oxytocine",
+    "routine_automation": "Ontspanningsroutines automatiseren"
+  },
+  "libraryContent": {
+    "verdieping": "De wetenschap achter de stress-cirkel",
+    "tips": "Het verschil tussen mindfulness en ontspanningsoefeningen",
+    "inspiratie": "Ervaringsverhaal: Terugdenken aan je Kindertijd",
+    "uitleg": "Uitleg over de Monitor en het meten van voortgang"
+  },
+  "metadata": {
+    "created": "2024-01-15",
+    "version": "2.0",
+    "author": "Therapieland Content Team",
+    "lastUpdated": "2024-01-15",
+    "tags": ["ontspanning", "stress-verlichting", "mindfulness", "e-health", "zelfzorg"],
+    "difficulty": "beginner",
+    "language": "dutch",
+    "accessibility": "mobile-optimized"
+  }
+}
