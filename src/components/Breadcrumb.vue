@@ -1,18 +1,17 @@
 <template>
   <div class="breadcrumb">
     <div class="breadcrumb-item" @click="navigateTo('program')">
-      <span class="breadcrumb-icon">🏠</span>
-      <span class="breadcrumb-text">Ontspannen Program</span>
+      Ontspannen Program
     </div>
     
     <div v-if="currentModule" class="breadcrumb-separator">›</div>
     <div v-if="currentModule" class="breadcrumb-item" @click="navigateToModule(currentModule)">
-      <span class="breadcrumb-text">{{ currentModule.name }}</span>
+      {{ currentModule.name }}
     </div>
     
     <div v-if="currentSession" class="breadcrumb-separator">›</div>
     <div v-if="currentSession" class="breadcrumb-item current">
-      <span class="breadcrumb-text">{{ currentSession.name }}</span>
+      {{ currentSession.name }}
     </div>
   </div>
 </template>
